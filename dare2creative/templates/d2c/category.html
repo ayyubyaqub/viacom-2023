@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block custom_link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock custom_link %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    *{
+      font-family: 'Montserrat', sans-serif;
+      text-decoration: none !important;
+    }
+    
+    
+    .bg-blurry {
+        background: rgba(33, 33, 36, 0.3);
+        backdrop-filter: blur(250px);
+        color: white;
+        font-weight: bold;
+    }
+    
+    
+    .middle-row{
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    
+    .card-img{
+        object-fit: cover;
+    }
+
+    .card.middle{
+      position: relative;
+    }
+    
+    .card.middle{
+      position: relative;
+    }
+    
+    .card.middle::after{
+      content: '';
+      position: absolute;
+      top: 0;left: 0;bottom: 0;right: 0;
+
+    }
+    .card-middle{
+      padding: 10px;
+      border: 1px solid #00000020;
+      border-radius: 10px;
+    }
+    .card-middle .img{
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .card-middle .img {
+      object-fit: cover;
+      margin-right: 30px;
+    }
+    .card-middle .img img {
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .challenge-title{
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .company-name{
+      font-size: 1rem;
+      opacity: 0.89;
+      margin-top: 0;
+    }
+    
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+<main class="mx-auto container-fluid" style="margin-bottom: 7rem; margin-top: 100px;width: 90%;">
+    <div class="row">
+        <h1 class="mb-5 text-center" style="font-weight: 800;">Job Opportunity</h1>
+
+
+
+        <div class="col-md-8 mt-5 mt-sm-0">
+            <h2 class="fw-bold mb-4">{{category_title|title}}</h2>
+            <!-- <div class="container-fluid"> -->
+                <div class="row middle-row">
+
+                    {%for sub_category in sub_categories %}
+                    
+
+                    <div class="col-12 p-0 mb-4">
+                      <a class="card-middle d-flex" href="{% url 'dare2creative:events' slug sub_category.slug  %}">
+                        <div class="img" style="width:33% ; max-height: 180px;">
+                          <img src="{{sub_category.image.url}}" width="100%" height="100%" alt="">
+                        </div>
+                          <div class="content d-flex justify-content-between flex-column flex-grow-1">
+                            <div class="heading">
+                                <h2 class="challenge-title text-black">{{sub_category.event|title}}</h2>
+                                <h4 class="company-name text-black">{{sub_category.company|title}}</h4>
+
+                            </div>
+                            <div class="tags ">
+                              <div class="registration text-primary d-flex justify-content-between">
+                                    <div class="available">
+                                      <sp an class="badge badge-primary bg-primary">{{sub_category.location}}</span>
+                                    </div>
+                                  <div class="fs-6 text-decoration-none text-black">Prize Money : {{sub_category.prize_money}}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>        
+                    </div>
+      
+
+                    {%endfor%}
+
+                    <!-- <div class="col-12 p-0 mb-4">
+                      <div class="card-middle d-flex">
+                        <div class="img" style="width:33% ;">
+                          <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" width="100%" height="100%" alt="">
+                        </div>
+                          <div class="content ">
+                            <div class="heading">
+                                <h2 class="challenge-title">Unstop IGNITE Season 4: Learn What to Learn and How to Learn </h2>
+                                <h4 class="company-name">Flipkart</h4>
+
+                            </div>
+                            <div class="tags mt-5">
+                              <div class="registration text-primary d-flex justify-content-between">
+                                <div class="fs-6">+467 registration</div>
+                                <div class="available">
+                                  <sp an class="badge badge-primary bg-danger">Danget</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>        
+                    </div> -->
+
+
+                    
+                </div>
+            <!-- </div> -->
+        </div>
+
+
+        <div class="col-md-4 mt-3 mt-sm-0 rounded " style="align-self: flex-start;">
+          <h2 class="fw-bold mb-4">Recent</h2>
+          <div class="recent-content row h-100 p-3 w-100 mx-auto" style="background-color: #f7f7f7;max-height: 55vh; overflow-y: auto; ">
+            
+            {%for recent in recents%}
+              <div class="col-12 my-2">
+                <div class="card d-flex flex-row border-0"  style="background-color: #f7f7f7;">
+                  <div class="recent-image rounded w-25" style="height: 100px;" >
+                    <img src="{{recent.image.url}}" height="100%" width="100%" class="card-img-top rounded" style="object-fit: cover;" alt="...">
+                  </div>
+                  <div class="card-body p-0 d-flex flex-column justify-content-between" style="padding-left: 1rem !important;">
+                    <h5 class="card-title m-0 text-black">{{recent.event}}</h5>
+                    <p class="card-text m-0 text-black">{{recent.company}}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- <div class="col-12 my-2">
+                <div class="card d-flex flex-row border-0"  style="background-color: #f7f7f7;">
+                  <div class="recent-image rounded w-25" >
+                    <img src="{{recent.image.url}}" height="100%" width="100%" class="card-img-top rounded" style="object-fit: cover;" alt="...">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{recent.event}}</h5>
+                    <p class="card-text"><small class="text-muted">{{recent.company}}</small></p>
+                  </div>
+                </div>
+              </div> -->
+            {%endfor%}
+
+           
+
+          </div>
+        </div>
+
+    </div>
+  </main>
+
+{% endblock body %}
+
+

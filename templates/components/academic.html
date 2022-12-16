@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+
+    
+    .carousel-div
+    {
+        height: 60vh;
+    
+    }
+    .carousel-div img{
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+    }
+    .carousel-div::after{
+        content: '';
+        background-image: linear-gradient(to top , #00000080 , #00000000);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+<main style="margin-bottom: 7rem;">
+    
+    <div id="carouselAcademyFade" data-bs-interval="2000" class="carousel slide carousel-fade mb-5" style="margin-top: 45px;" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item carousel-div active">
+            <img src="{{academic_page.image1.url}}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item carousel-div">
+            <img src="{{academic_page.image2.url}}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item carousel-div">
+            <img src="{{academic_page.image3.url}}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcademyFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselAcademyFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="academy container-fluid">
+        <h1 class="text-center mb-5 fw-bolder">{{academic_page.heading}}</h1>
+        <div class="row">
+
+            {%for academic in academics%}
+                <div class="col-12 mb-4">
+                    <div class="card mb-3 h-100 mx-auto" style="width: 100%;">
+                        <div class="row g-0 h-100">
+                        <div class="col-md-4">
+                            <img src="https://www.psdstack.com/wp-content/uploads/2019/08/copyright-free-images-750x420.jpg" class="img-fluid rounded-start" style="height: 100%; object-fit:cover " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title fw-bold">{{academic.title | title}}</h5>
+                            <p class="card-text">{{academic.description}}</p>
+                                <h6 class="fw-bold mb-0">{{academic.duration}}</h6>
+                                <h6 class="mt-0 ">{{academic.skill_field}}</h6>
+                            <button class="btn btn-primary mt-3" data-bs-title="{{academic.title | title}}" data-bs-toggle="modal" data-bs-body="{{academic.body}}" data-bs-target="#academyModal" data-bs-whatever="{{academic.slug}}">Learn more</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>  
+                </div>
+            {%endfor%}
+
+
+            <!-- <div class="col-md-6">
+                <div class="card mb-3 mx-auto" style="width: 100%;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://www.psdstack.com/wp-content/uploads/2019/08/copyright-free-images-750x420.jpg" class="img-fluid rounded-start" style="height: 100%; object-fit:cover " alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title fw-bold">The Video Production Workshop</h5>
+                          <p class="card-text">Learn how to capture footage and sound correctly and become a master Digital
+                            filmmaker through this professional certification and training course in video
+                            production.</p>
+                            <h6 class="fw-bold mb-0">3 months, 12 lessons * 2 hours/lesson</h6>
+                            <h6 class="mt-0 ">Actionable skills, Infinite possibilities.</h6>
+                          <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#academyModal" data-bs-whatever="video-production">Learn more</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>  
+            </div> -->
+            <!-- <div class="col-md-6">
+                <div class="card mb-3 mx-auto" style="width: 100%;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://www.psdstack.com/wp-content/uploads/2019/08/copyright-free-images-750x420.jpg" class="img-fluid rounded-start" style="height: 100%; object-fit:cover " alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title fw-bold">The Video Production Workshop</h5>
+                          <p class="card-text">Learn how to capture footage and sound correctly and become a master Digital
+                            filmmaker through this professional certification and training course in video
+                            production.</p>
+                            <h6 class="fw-bold mb-0">3 months, 12 lessons * 2 hours/lesson</h6>
+                            <h6 class="mt-0 ">Actionable skills, Infinite possibilities.</h6>
+                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#academyModal" data-bs-whatever="music-video">Learn more</button>
+
+                        </div>
+                      </div>
+                    </div>
+                </div>  
+            </div> -->
+            
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="academyModal" tabindex="-1" aria-labelledby="academyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="academyModalLabel">New message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="markup">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </main>
+
+
+
+{% endblock body %}
+
+{% block scripts %} 
+<script>
+
+    const academyModal = document.getElementById('academyModal')
+    academyModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const recipient = button.getAttribute('data-bs-whatever')
+    const title = button.getAttribute('data-bs-title')
+    const markup = document.getElementById("markup")
+    const modalTitle = academyModal.querySelector('.modal-title')
+    const academic_content = button.getAttribute('data-bs-body')
+    modalTitle.textContent = title
+    markup.innerHTML= academic_content
+    })
+</script>
+{% endblock scripts %}
+

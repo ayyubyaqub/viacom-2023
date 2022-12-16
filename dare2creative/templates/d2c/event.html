@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block custom_link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock custom_link %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+
+    .image>  img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    
+    .company-image{
+      height: 130px;
+      width: 130px;
+    }
+    
+    span.icon{
+      height: 30px ;
+      width: 30px;
+    }
+    @media only screen and (max-width : 786px) {
+        main{
+            margin-top: 120px !important ;
+        }
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+<main class="container " style="margin-bottom: 7rem; margin-top: 65px;">
+    <div class="image w-100 mb-4" style="height: 50vh;min-height: 300px;">
+      <img src="{{event.heading_image.url}}" alt="">
+    </div>
+    <div class="details ">
+
+      <div class="row" style="margin-top: 3rem;">
+        <div class="col-sm-4 mb-4 mx-auto mx-sm-0">
+          <div class="banner-item d-flex align-items-center justify-content-start justify-content-sm-center">
+            <div class="icon" style="margin-right: 1rem;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
+                    <g>
+                      <g>
+                        <path d="M490.6,43H381.1V11h-20.9v32H151.7V11h-20.9v32H21.4C15.2,43,11,47.2,11,53.6v436.7c0,6.4,4.2,10.7,10.4,10.7h469.1    c6.3,0,10.4-4.3,10.4-10.7V53.6C501,47.2,496.8,43,490.6,43z M480.1,479.7H31.9V64.3h99v32h20.9v-32h208.5v32h20.9v-32h99V479.7z"/>
+                        <path d="m84,170.8c-6.3,0-10.4,4.3-10.4,10.7v245c0,6.4 4.2,10.7 10.4,10.7h344c6.3,0 10.4-4.3 10.4-10.7v-245c0-6.4-4.2-10.7-10.4-10.7h-344zm333.6,245h-323.2v-223.7h323.2v223.7z"/>
+                        <rect width="20.9" x="214.3" y="232.6" height="21.3"/>
+                        <rect width="20.9" x="276.9" y="232.6" height="21.3"/>
+                        <rect width="20.9" x="339.4" y="232.6" height="21.3"/>
+                        <rect width="20.9" x="151.7" y="293.3" height="21.3"/>
+                        <rect width="20.9" x="214.3" y="293.3" height="21.3"/>
+                        <rect width="20.9" x="276.9" y="293.3" height="21.3"/>
+                        <rect width="20.9" x="339.4" y="293.3" height="21.3"/>
+                        <rect width="20.9" x="151.7" y="355.1" height="21.3"/>
+                        <rect width="20.9" x="214.3" y="355.1" height="21.3"/>
+                        <rect width="20.9" x="276.9" y="355.1" height="21.3"/>
+                        <rect width="20.9" x="339.4" y="355.1" height="21.3"/>
+                      </g>
+                    </g>
+                  </svg>
+            </div>
+            <div class="item-content">
+              <h3 class="fs-5 m-0 fw-bold">Registration Deadline</h3>
+              <h6 class="fs-6 m-0" style="opacity: .89;">{{event.registration_deadline}}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-4">
+          <div class="banner-item d-flex align-items-center justify-content-start justify-content-sm-center">
+            <div class="icon" style="margin-right: 1rem;">
+                <svg width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.221 16.268a15.064 15.064 0 0 0 1.789 1.9C2.008 18.111 2 18.057 2 18a5.029 5.029 0 0 1 3.233-4.678 1 1 0 0 0 .175-1.784A2.968 2.968 0 0 1 4 9a2.988 2.988 0 0 1 5.022-2.2 5.951 5.951 0 0 1 2.022-.715 4.994 4.994 0 1 0-7.913 6.085 7.07 7.07 0 0 0-2.91 4.098zM23.779 16.268a7.07 7.07 0 0 0-2.91-4.1 4.994 4.994 0 1 0-7.913-6.086 5.949 5.949 0 0 1 2.022.715 2.993 2.993 0 1 1 3.614 4.74 1 1 0 0 0 .175 1.784A5.029 5.029 0 0 1 22 18c0 .057-.008.111-.01.167a15.065 15.065 0 0 0 1.789-1.899z"/>
+                    <path d="M18.954 20.284a7.051 7.051 0 0 0-3.085-5.114A4.956 4.956 0 0 0 17 12a5 5 0 1 0-8.869 3.17 7.051 7.051 0 0 0-3.085 5.114 14.923 14.923 0 0 0 1.968.849C7.012 21.088 7 21.046 7 21a5.031 5.031 0 0 1 3.233-4.678 1 1 0 0 0 .175-1.785A2.964 2.964 0 0 1 9 12a3 3 0 1 1 6 0 2.964 2.964 0 0 1-1.408 2.537 1 1 0 0 0 .175 1.785A5.031 5.031 0 0 1 17 21c0 .046-.012.088-.013.133a14.919 14.919 0 0 0 1.967-.849z"/>
+                  </svg>
+                  
+            </div>
+            <div class="item-content">
+                <h3 class="fs-5 m-0 fw-bold">Participation</h3>
+                <h6 class="fs-6 m-0" style="opacity: .89;">{{event.participation}}</h6>
+              </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-4">
+          <div class="banner-item d-flex align-items-center justify-content-start justify-content-sm-center">
+            <div class="icon" style="margin-right: 1rem;">
+                <svg width="30px" height="30px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>rupee-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M28,8H24.14A7.52,7.52,0,0,0,22.6,6H28a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2h7.55a5.42,5.42,0,0,1,4.2,2H10a1,1,0,0,0,0,2H22.79A5.54,5.54,0,0,1,23,11.51,5.48,5.48,0,0,1,17.55,17H11.14a1,1,0,0,0-.75,1.66L22.06,32a1,1,0,1,0,1.5-1.32L13.35,19h4.21a7.51,7.51,0,0,0,7.3-9H28a1,1,0,0,0,0-2Z"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                </svg>
+            </div>
+            <div class="item-content">
+              <h3 class="fs-5 m-0 fw-bold">Registration Fee</h3>
+              <h6 class="fs-6 m-0" style="opacity: .89;">{{event.fee}}</h6>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+
+      <div class="row mt-5">  
+        <div class="col-sm-8 d-flex">
+          <div class="company-image " style="margin-right: 1rem;">
+            <img src="{{event.image.url}}" height="100%" width="100%" alt="" style="object-fit:cover; border-radius: 8px;">
+          </div>
+          <div class="company-detail d-flex flex-column justify-content-between">
+            <div class="heading">
+              <div class="title">
+                <h1 class="fs-4 fw-bolder">{{event.event}}</h1>
+              </div>
+
+              <div class="title">
+                <h2 class="fs-6">{{event.company}}</h1>
+              </div>
+
+            </div>
+            <div class="location position-relative mb-3">
+              Location <span class="bg-secondary text-white badge">{{event.location}}</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-4 d-flex mt-3 mt-sm-0 align-items-center">
+          <div class="w-100">
+
+            <a href="{{event.register_url}}" class="btn btn-primary w-100 register-btn " >Register</a>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+      <div class="row mt-5  p-3 rounded "style="background-color:#f9f9f9;">
+
+        <div class="col-12">
+          <div class="dates d-flex">
+
+            <div class="start-date " style="margin-right: 1.5rem;border-right: 1px solid #00000020;padding-right: 1.5rem;">
+              <h3 class="fs-5 fw-bold">Start Date</h3>
+              <p class="pb-0 m-0">{{event.start_date}}</p>
+            </div>
+            <div class="end-date">
+              <h3 class="fs-5 fw-bold">End Date</h3>
+              <p class="pb-0 m-0">{{event.end_date}}</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 mt-3 mt-sm-5 ">
+          <!-- <div class="container-fluid"> -->
+
+            <div class="row">
+              <div class="col-sm-7">
+
+                <div class="eligibility d-flex align-items-end">
+                  <span class="icon" >
+                    
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 20V19C2 15.134 5.13401 12 9 12V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.8038 12.3135C16.4456 11.6088 17.5544 11.6088 18.1962 12.3135V12.3135C18.5206 12.6697 18.9868 12.8628 19.468 12.8403V12.8403C20.4201 12.7958 21.2042 13.5799 21.1597 14.532V14.532C21.1372 15.0132 21.3303 15.4794 21.6865 15.8038V15.8038C22.3912 16.4456 22.3912 17.5544 21.6865 18.1962V18.1962C21.3303 18.5206 21.1372 18.9868 21.1597 19.468V19.468C21.2042 20.4201 20.4201 21.2042 19.468 21.1597V21.1597C18.9868 21.1372 18.5206 21.3303 18.1962 21.6865V21.6865C17.5544 22.3912 16.4456 22.3912 15.8038 21.6865V21.6865C15.4794 21.3303 15.0132 21.1372 14.532 21.1597V21.1597C13.5799 21.2042 12.7958 20.4201 12.8403 19.468V19.468C12.8628 18.9868 12.6697 18.5206 12.3135 18.1962V18.1962C11.6088 17.5544 11.6088 16.4456 12.3135 15.8038V15.8038C12.6697 15.4794 12.8628 15.0132 12.8403 14.532V14.532C12.7958 13.5799 13.5799 12.7958 14.532 12.8403V12.8403C15.0132 12.8628 15.4794 12.6697 15.8038 12.3135V12.3135Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M15.3636 17L16.4546 18.0909L18.6364 15.9091" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12C11.2091 12 13 10.2091 13 8C13 5.79086 11.2091 4 9 4C6.79086 4 5 5.79086 5 8C5 10.2091 6.79086 12 9 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+    
+                  </span>
+                  <h3 class="m-0 fs-5 fw-bolder mx-3 mr-1">Eligibility</h3>
+                  <span >{{event.eligibility}}</span>
+                </div>
+
+
+              </div>
+              <div class="col-sm-5 mt-3 mt-sm-0 ">
+
+                <div class="bottom h-100  d-flex justify-content-start justify-content-sm-end  align-items-end">
+    
+                  
+    
+                  <div class="updation d-flex align-items-center">
+                    <h3 class="fs-6 fw-bold mb-0" style="display: inline; margin-right: 1rem;">Last Updated on : </h3>
+                    <h5 class="fs-6 m-0">{{event.last_update}}</h5>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
+          
+          
+
+      </div>
+
+    </div>
+</main>
+{% endblock body %}
+
+

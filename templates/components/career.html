@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+   table.table tbody tr ,
+table.table thead tr th,
+table.table thead {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+
+
+.bg-blurry {
+    background: rgba(33, 33, 36, 0.3);
+    backdrop-filter: blur(250px);
+    color: white;
+    font-weight: bold;
+}
+.rainbow{
+
+  background: linear-gradient(to right,#3D7AF1 47.59%,#EF476F 64.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+table {
+	display: table !important;
+}
+table tr.table-data {
+	display: table-cell !important;
+}
+table tr td {
+	display: block !important;
+}
+.or{
+  position: relative;
+}
+.or::after{
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100px;
+  background-color: black;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 120%;
+  border-radius: 10px;
+}
+.or::before{
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100px;
+  background-color: black;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 120%;
+  border-radius: 10px;
+}
+
+</style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+<div id="myCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+    <video loop="" muted="" autoplay="" class="carouselImage">
+    <source src="{{career.video.url}}">
+    </video>
+    <div class="container">
+    <div class="carousel-caption text-center bg-blurry p-3 rounded">
+    <div class="d-flex">
+    <div class="mx-auto">
+      <h1 class="display-3 border-5 py-3 text-uppercase" style="letter-spacing: 10px;">{{career.title}}</h1>
+    </div>
+    </div>
+    <a href="#scrollDown" class="text-white text-decoration-none text-uppercase" style="letter-spacing: 10px;">
+    <!-- <p class="pb-3 fw-light d-none d-md-block">CHAMPIONS OF CUSTOMER EXPERIENCE IN SYNC WITH TRANSITIONS OF THE DIGITAL WORLD</p> -->
+    <p class="pb-3 lead fw-light d-none d-md-block">{{career.subtitle}}</p>
+    <p class="pb-3 fw-light d-block d-md-none">
+        {{career.subtitle_mobile|safe}}
+    <!-- CHAMPIONS<br> OF CUSTOMER<br> EXPERIENCE <br> IN SYNC WITH <br> TRANSITIONS OF <br>DIGITAL WORLD<br> -->
+    </p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-down">
+    <polyline points="7 13 12 18 17 13"></polyline>
+    <polyline points="7 6 12 11 17 6"></polyline>
+    </svg></p>
+    </a>
+    <div id="scrollDown"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <main class="container " style="margin-bottom: 5rem; margin-top: 3rem;">
+      
+        <h1 class="text-center mb-4 mt-3 fw-bold">{{career.title2}}</h1>
+        <div class="row">
+          <div class="col-lg-10 text-center mx-auto">
+            
+            <p class="">{{career.description}}</p>
+          </div>
+        </div>
+        
+        <h2 class="text-center mt-2 mb-5 fw-bold rainbow">We are Hiring</h2>
+        <div class="table-responsive-lg mb-5">
+  
+            <table class="table mt-3 table-borderless">
+                <thead class="border-top border-bottom">
+                  <tr>
+                    <!-- <th scope="col">Internship</th>
+                    <th scope="col">Jobs</th>
+                    <th scope="col">Artists</th> -->
+                    {% for heading in table%}
+                        <th scope="col">{{heading.heading}}</th>
+                    {%endfor%}
+                </tr>
+            </thead>
+            <tbody class="border-bottom">
+                
+                
+                {% for heading in table%}
+                    <tr class="table-data">
+                        {% for i in heading.career_header_content_set.all%}
+                             <td> {{i.content}}</td>
+                        {%endfor%}
+                    </tr>
+                {%endfor%}
+                    
+                   
+                  
+                  
+                  
+                  
+                  
+                  
+                </tbody>
+            </table>
+        </div>
+        <div class="email ">
+            <div class="d-flex mx-auto justify-content-center">
+  
+              <div class="fw-bolder">
+                  Send your resume : 
+              </div>
+              <div class="ml-4" style="margin-left: 15px;">
+                  <div>talent@viacomindia.com</div>
+                  
+              </div>
+          
+            </div>
+            <div class="text-center my-4">
+              <span class="or">OR</span>
+            </div>
+            <div class="d-flex mx-auto justify-content-center">
+  
+              <div class="ml-4" style="margin-left: 15px;">
+                  <a class="fs-4" href="{{career.form_link}}" target="_blank">Apply here</a>
+                  
+              </div>
+          
+            </div>
+  
+            <div>
+  
+            </div>
+        </div>
+        
+        
+  
+    </main>
+  
+
+
+{% endblock body %}
+

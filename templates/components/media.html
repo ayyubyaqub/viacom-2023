@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    *{
+      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
+    }
+    
+    .bg-blurry {
+        background: rgba(33, 33, 36, 0.3);
+        backdrop-filter: blur(250px);
+        color: white;
+        font-weight: bold;
+    }
+    
+    
+    .row-image {
+        padding: 10px;
+            /* max-width: 1100px; */
+          
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* grid-auto-rows: 100px;
+            grid-auto-rows: minmax(100px , 1fr); */
+            grid-auto-flow: dense;
+    }
+    
+    .no-image {
+        /* grid-row: span 2; */
+        height: 100%;
+    }
+    
+        /* Stretch horizontally */
+    .with-image {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    
+        /* Stretch vertically and horizontally */
+    .with-video {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .video-div  , .image-div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-around; */
+    }
+    .media-image{
+        height: 90%;
+    }
+    .media-image img{
+        height: 100%;
+    }
+    @media screen and (max-width: 515px) {
+            .no-image {
+              grid-row: span 1;
+            }
+          
+            .with-image {
+              grid-column: span 1;
+            }
+          
+            .with-video {
+              grid-column: span 1;
+              grid-row: span 1;
+            }
+    }
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+<main class="container " style="margin-bottom: 7rem; margin-top: 110px;">
+    <h1 style="font-weight: 800;font-size: 3rem; margin-bottom: 3rem;" class="text-center">Media</h1>
+
+
+        <div class="row-image">
+            {%for content in media%}
+                {%if content.video.url is not none%}
+                <div class="with-video">
+                    <div class="rounded border video-div">
+                            <div class="media-image">
+                                <video width="100%" height="100%" controls>
+                                    <source src="{{content.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="content p-4">
+                                <h2 class="fs-4 fw-bold ">{{content.title|title}}</h2>
+                                <p class="m-0" style="font-size: 0.98rem;">{{content.description}}</p>
+                                {%if content.article_link is not none%}
+                                <div class="link text-right mt-3" style="text-align:right ;" >
+                                    <a  href="{{content.article_link}}" target="_blank">Read More</a>
+                                </div>
+                                {%endif%}
+                            </div>
+                    </div>
+            
+                
+                </div>
+                {%elif content.image.url is not none%}
+                    <div class="with-image">
+                        <div class="rounded border image-div">
+                            <div class="media-image">
+                                <img src="{{content.image.url}}" width="100%"  alt="">
+                            </div>
+                            <div class="content p-4">
+                                <h2 class="fs-4 fw-bold ">{{content.title|title}}</h2>
+                                <p class="m-0" style="font-size: 0.98rem;">{{content.description}}</p>
+                                {%if content.article_link is not none%}
+                                <div class="link text-right mt-3" style="text-align:right ;" >
+                                    <a  href="#" >Read More </a>
+                                </div>
+                                {%endif%}
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                {%else%}
+                <div class="no-image">
+                    <div class="rounded border" style="height: 100%; padding: 1rem;">
+                        <h2 class="fs-4 fw-bold ">{{content.title|title}}</h2>
+                        <p class="m-0" style="font-size: 0.98rem;">{{content.description}}</p>
+                        {%if content.article_link is not none%}
+                        <div class="link text-right mt-3" style="text-align:right ;" >
+                            <a  href="#" >Read More </a>
+                        </div>
+                        {%endif%}
+                    </div>
+                </div>
+                {%endif%}
+            {%endfor%}
+
+
+            
+            
+        </div>
+
+  </main>
+
+
+{% endblock body %}
+

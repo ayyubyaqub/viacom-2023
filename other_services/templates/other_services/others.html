@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    .markdown *{
+        /* font-family: 'Lato', sans-serif !important; */
+        color: black;
+        font-size: 1.2rem !important;
+        /* line-height: 0.98; */
+        /* font-weight: 600 !important; */
+    }
+    .img-fluid{
+        height: 500px !important;
+        width: 100%;
+        /* object-fit: cover; */
+    }
+</style>
+
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+<main class="container-fluid" style="margin-bottom: 7rem; margin-top: 120px;">
+    
+   <div class="container-fluid gx-1">
+
+      <div class="row gx-1">
+          <div class="col-lg-6" style="padding-right: 1.8rem;">
+          <h3 class="fw-bold">{{other.title | title}}</h3>
+          <div class="markdown">{{other.description | safe}}</div>
+          <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 g-2 mb-3">
+          <div class="col">
+          <a class="btn-brown rounded-pill btn w-100" href="{% url 'create_video' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg> Create Video</a>
+          </div>
+          </div>
+          </div>
+          <div class="col-lg-6">
+             {% if other.video.url is not none %}
+            <video controls="" autoplay="" muted="" loop="" class="w-100" style="border-radius: 10px;">
+               <source src="{{other.video.url}}">
+            </video>
+            {% elif other.inner_image.url is not none %}
+               <img src="{{other.inner_image.url}}" width="100%" height="500px" class="rounded" style="object-fit : cover;" alt="">
+            {%else%}
+               <img src="{{other.outer_image.url}}" width="100%" height="500px" class="rounded" style="object-fit : cover;" alt="">
+            {%endif%}
+          </div>
+      </div>
+   </div>
+
+
+        {% if other.block_heading %}
+        <div class="row" style="margin-top: 5rem;">
+            <div class="col-12" style="margin-bottom: 1.5rem;">
+                <h2 class="fw-bold">{{other.block_heading}}</h2>
+            </div>
+            {% for block in other.other_services_blocks_set.all %}
+            <div class="col-sm-3 mb-4">
+                <div class="card h-100" >
+                    <div class="card-body">
+                    <h5 class="card-title" style="font-weight:900;">{{block.heading|title}}</h5>
+                    <p class="card-text">{{block.paragraph}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        {% endif %}
+
+    {%if other.secondary_title %}
+   <div class="row" style="margin-top: 5rem;">
+    <div class="col-12 mb-5">
+        <h2 class="fw-bold">{{other.secondary_title}}</h2>
+    </div>
+    <div class="d-none d-md-block">
+        <div class="row row-cols-2 g-3">
+            {%if other.sub_image_1%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_1.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_2%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_2.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_3%}
+            <div class="col order-1">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_3.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_4%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_4.url}}">
+                    </a>
+            </div>
+            {%endif%}
+
+        </div>
+    </div>
+
+    <div class="d-block d-md-none">
+        <div class="row row-cols-1 g-3">
+            {%if other.sub_image_1%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_1.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_2%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_2.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_3%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_3.url}}">
+                    </a>
+            </div>
+            {%endif%}
+            {%if other.sub_image_4%}
+            <div class="col">
+                <a href="{% url 'works' %}">
+                    <img class="img-fluid" src="{{other.sub_image_4.url}}">
+                    </a>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+
+
+
+
+   
+    
+  </div>
+  {%endif%}
+
+{%if other.yt_heading %}
+   <div class="container-fluid my-5 py-5">
+      <h4 class="fw-bold mb-5">{{other.yt_heading|title }}</h4>
+      <div class="row row-cols-1 row-cols-lg-3 g-3">
+          <div class="col">
+              <a class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#ourWorkModel"
+                  data-youtube-video-link="{{other.video_link_youtube1}}"
+                  onclick="changeYoutubeVIdeo(this.getAttribute('data-youtube-video-link'));">
+                  <div class="shadow border onHoverBackgroundChange"
+                      style="height:100%;border-radius: 15px;background-color:#ededed;">
+                      <div class="slide-up">
+                          <div class="make-height-auto-yt-video box"
+                              style="border-top-left-radius:15px;border-top-right-radius:15px">
+                              <img src="{%if other.image_youtube1 %}{{other.image_youtube1.url}}{%endif%}"
+                                  class="w-100 boxImg ourWorkImg"
+                                  style="height:350px;border-top-left-radius:15px;border-top-right-radius:15px">
+                              <div class="make-height-auto-yt-video overlay3"
+                                  style="border-top-left-radius:15px;border-top-right-radius:15px">
+                                  <div class="justify-content-center align-items-center d-flex h-100"
+                                      style="height:300px;border-top-left-radius:15px;border-top-right-radius:15px">
+                                      <div class="mx-auto">
+                                          <i
+                                              class="fas fa-play border border-light bg-light border-2 text-dark rounded-circle p-3 fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card_body">
+                          <p style="font-size: 12px;" class="mt-2 mb-0 pb-1 text-dark text-muted px-3">
+                              {{other.title_youtube1}}</p>
+                          <p style="font-size: 14px;" class="fw-bold text-dark px-3">
+                              {{other.brief_youtube1}}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col">
+              <a class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#ourWorkModel"
+                  data-youtube-video-link="{{other.video_link_youtube2}}"
+                  onclick="changeYoutubeVIdeo(this.getAttribute('data-youtube-video-link'));">
+                  <div class="shadow border onHoverBackgroundChange"
+                      style="height:100%;border-radius: 15px;background-color:#ededed;">
+                      <div class="slide-up">
+                          <div class="make-height-auto-yt-video box"
+                              style="border-top-left-radius:15px;border-top-right-radius:15px">
+                              <img src="{%if other.image_youtube2 %}{{other.image_youtube2.url}}{%endif%}"
+                                  class="w-100 boxImg ourWorkImg"
+                                  style="height:350px;border-top-left-radius:15px;border-top-right-radius:15px">
+                              <div class="make-height-auto-yt-video overlay3"
+                                  style="border-top-left-radius:15px;border-top-right-radius:15px">
+                                  <div class="justify-content-center align-items-center d-flex h-100"
+                                      style="height:300px;border-top-left-radius:15px;border-top-right-radius:15px">
+                                      <div class="mx-auto">
+                                          <i
+                                              class="fas fa-play border border-light bg-light border-2 text-dark rounded-circle p-3 fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card_body">
+                          <p style="font-size: 12px;" class="mt-2 mb-0 pb-1 text-dark text-muted px-3">
+                              {{other.title_youtube2}}</p>
+                          <p style="font-size: 14px;" class="fw-bold text-dark px-3">
+                              {{other.brief_youtube2}}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col">
+              <a class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#ourWorkModel"
+                  data-youtube-video-link="{{other.video_link_youtube3}}"
+                  onclick="changeYoutubeVIdeo(this.getAttribute('data-youtube-video-link'));">
+                  <div class="shadow border onHoverBackgroundChange"
+                      style="height:100%;border-radius: 15px;background-color:#ededed;">
+                      <div class="slide-up">
+                          <div class="make-height-auto-yt-video box"
+                              style="border-top-left-radius:15px;border-top-right-radius:15px">
+                              <img src="{%if other.image_youtube3 %}{{other.image_youtube3.url}}{%endif%}"
+                                  class="w-100 boxImg ourWorkImg"
+                                  style="height:350px;border-top-left-radius:15px;border-top-right-radius:15px">
+                              <div class="make-height-auto-yt-video overlay3"
+                                  style="border-top-left-radius:15px;border-top-right-radius:15px">
+                                  <div class="justify-content-center align-items-center d-flex h-100"
+                                      style="height:300px;border-top-left-radius:15px;border-top-right-radius:15px">
+                                      <div class="mx-auto">
+                                          <i
+                                              class="fas fa-play border border-light bg-light border-2 text-dark rounded-circle p-3 fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card_body">
+                          <p style="font-size: 12px;" class="mt-2 mb-0 pb-1 text-dark text-muted px-3">
+                              {{other.title_youtube3}}</p>
+                          <p style="font-size: 14px;" class="fw-bold text-dark px-3">
+                              {{other.brief_youtube3}}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="modal fade" id="ourWorkModel" tabindex="-1" aria-labelledby="ourWorkModelLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl rounded-5">
+                  <div class="position-absolute top-0 end-0">
+                      <button style="cursor: pointer;"
+                          class="btn border-danger border-2 bg-light text-danger rounded-circle"><i
+                              class="fas fa-close"></i></button>
+                  </div>
+                  <div class="modal-content" style="border-radius:15px;">
+                      <iframe id="youtube_video_here" style="width:100%;height:78vh;" src=""
+                          title="YouTube video player" frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen=""></iframe>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+
+
+      <div class="d-flex">
+          <a class="mx-auto btn btn-gray rounded-pill mt-5" href="/works">
+              <div class="justify-content-between p-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="feather feather-plus">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  <span class="my-auto">Browse more</span>
+              </div>
+          </a>
+      </div>
+  </div>
+{%endif%}
+   
+
+ </main>
+{% endblock body %}
+

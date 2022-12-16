@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+
+  
+
+<main class="container-fluid" style="margin-bottom: 7rem; margin-top: 100px;">
+    <div class="heading mb-5">
+        <h1 class="fw-bolder">Other Services</h1>
+    </div>
+
+    <div class="row mt-5">
+        {%for link in links%}
+
+        <div class="col-md-4">
+
+            <div class="card">
+                <img src="{{link.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{link.title | title}}</h5>
+                  <p class="card-text">{{link.description}}</p>
+                  <a href="{{link.url}}" class="btn btn-primary">Go Here</a>
+                </div>
+              </div>
+        </div>
+        {%endfor%}
+    </div>
+
+  </main>
+
+
+{% endblock body %}
+

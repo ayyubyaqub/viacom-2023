@@ -1,0 +1,188 @@
+{% load static %}
+<!-- <nav class="navbar navbar-expand-lg fixed-top header-whole navbar-dark bg-blurry-1">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src='{% static "images/logos/Viacom India Logo Transparent Bar Shape.png" %}' width="200">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/marketplace">Video Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="/categories">Video Categories</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="/all-industry">Industry</a>
+                    </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/works">Our Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/works">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'creators' %}">For Creators</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'other_services:other_services_home_page' %}">Other Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'subscription' %}">Subscriptions</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'about-us' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'contactus' %}">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+<!-- <nav class="navbar navbar-expand-lg fixed-top header-whole navbar-dark pt-0 fw-bold bg-blurry">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+        <img src='{% static "images/logos/Viacom India Logo Transparent Bar Shape.png" %}' width="200">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/marketplace">Video Marketplace</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/categories">Video Categories</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/all-industry">Industry</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/works">Our Works</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/creators">For Creators</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/pricing">Pricing</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/subscription">Subscriptions</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="#!">24/7 Content</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/about-us">About Us</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="/contactus">Contact Us</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+  </nav> -->
+
+
+  <header class="primary-header " >
+
+    <div class="container-fluid">
+
+        <nav class="menu d-md-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-none d-md-block" href="/">
+                <img class="logo" src="https://viacomindia.s3.amazonaws.com/images/logos/Viacom%20India%20Logo%20Transparent%20Bar%20Shape.png" width="200">
+            </a>
+            <ul class="m-0 p-0">
+                <li class="has-sub-menu"><a class="fw-bold" style="color: #fff;">Video Services</a>
+                    <div class="sub-menu-wrapper">
+                        <ul class="sub-menu">
+                            <li>
+                                <a aria-current="page"  href="/marketplace" >Curated Video Marketplace</a>
+                            </li>
+                            <li>
+                                <a aria-current="page" href="/all-industry">Curated Industry Video Marketplace</a>
+                            </li>
+                            <li>
+                                <a href="/differentiated-industry-content">Differentiated Industry Video Content</a>
+                            </li>
+                            <hr class="d-none d-md-block m-0">
+                            <li>
+                                <a href="/categories">All Categories</a>
+                            </li>
+                 
+                        </ul>
+        
+                    </div>
+                </li>
+            <li><a class="fw-bold" href="{% url 'works' %}">Works</a></li>
+            <li><a class="fw-bold" href="{% url 'blogs:blogs' %}">Blogs</a></li>
+            <li><a class="fw-bold" href="{% url 'creators' %}">For Creators</a></li>
+            <li><a class="fw-bold" href="{% url 'other_services:other_services_home_page' %}">Other Services</a></li>
+            <li><a class="fw-bold" href="{% url 'subscription' %}">Subscriptions</a></li>
+            <li class="has-sub-menu"><a class="fw-bold" style="color: #fff;">About</a>
+            <div class="sub-menu-wrapper">
+                <ul class="sub-menu">
+                    <li>
+                        <a aria-current="page" href="/about-us">About us</a>
+                    </li>
+                    <li>
+                        <a aria-current="page" href="/about-us/#team">Our team</a>
+                    </li>
+                    <li>
+                        <a href="/works">Our works</a>
+                    </li>
+                    
+                    <li>
+                        <a target="_blank" href="{% url 'blogs:blogs' %}">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'stories:stories' %}">Success Stories</a>
+                    </li>
+                    
+                    <li>
+                        <a aria-current="page" href="{% url 'vi_network:vi_network' %}">VI Network</a>
+                    </li>
+                    <li>
+                        <a href="/agencies">Agencies</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'career' %}">Career</a>
+                    </li>
+                    <li>
+                        <a href="/contact-us">Contact us</a>
+                    </li>
+                </ul>
+
+            </div>
+            </li>
+
+            <li><a class="fw-bold" href="{% url 'contactus' %}">Contact us</a></li>
+        </ul>
+        </nav>
+
+    
+    </div>
+  <div class="w-100 mobile-menu-parent d-md-none" style="height: 80px;">
+    <a class="navbar-brand d-md-none logo-menu" href="/">
+        <img class="logo" src="https://viacomindia.s3.amazonaws.com/images/logos/Viacom%20India%20Logo%20Transparent%20Bar%20Shape.png" width="200">
+    </a>
+      <div class="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+  </div>
+  
+</header>

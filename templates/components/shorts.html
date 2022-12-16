@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    
+    body{
+        background: rgb(33, 33, 36);
+    }
+    
+    .bg-blurry {
+        background: rgba(33, 33, 36, 0.3);
+        backdrop-filter: blur(250px);
+        color: white;
+        font-weight: bold;
+    }
+    .news-card{
+        border-top: 10px solid #F94C66;
+        background-color: white;
+        border-radius: 10px;
+        height: 100%;
+    }
+    .page-item > a{
+        background-color: transparent;
+        color: white;
+    }
+    .markdown *{
+        /* font-family: 'Lato', sans-serif !important; */
+        color: black;
+        font-size: 1.2rem !important;
+        /* line-height: 0.98; */
+        /* font-weight: 600 !important; */
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+<main class="container " style="margin-bottom: 7rem; margin-top: 120px;">
+    <div class="row mb-5">
+        <h1 class="fw-bolder text-white mb-3">{{shorts_page.heading}}</h1>
+        <p class="text-white">{{shorts_page.paragraph}}</p>
+    </div>
+
+    <div class="row mb-5">
+
+        {%for short in shorts_obj.object_list%}
+        
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="news-card p-4">
+                    <h2 class="mb-3" style="font-weight: 700;">{{short.title|title}}</h2>
+                    <div class="m-0 p-0 markdown">{{short.description | safe}}</div>
+                </div>
+            </div>
+        {%endfor%}
+
+    </div>
+
+
+    <div aria-label="Page navigation example mx-auto">
+        <ul class="pagination justify-content-center">
+          {%if shorts_obj.has_previous %}
+
+            <li class="page-item">
+              <a class="page-link" href="{% url 'shorts' shorts_obj.previous_page_number  %}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            
+          {%else%}
+            <li class="page-item disabled">
+              <a class="page-link disabled" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+          {%endif%}
+
+          {%for page_num in pagination.page_range%}
+            {%if page_num == num %}
+              <li class="page-item active"><a class="page-link" href="{% url 'shorts' page_num %}">{{page_num}}</a></li>
+            {%else%}
+              <li class="page-item"><a class="page-link" href="{% url 'shorts' page_num %}">{{page_num}}</a></li>
+            {%endif%}
+          {%endfor%}
+          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+
+          {%if shorts_obj.has_next %}
+
+            <li class="page-item">
+              <a class="page-link " href="{% url 'shorts' shorts_obj.next_page_number  %}" aria-label="next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            {%else%}
+            <li class="page-item disabled">
+              <a class="page-link " href="#" aria-label="next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+
+          {%endif%}
+        </ul>
+      </div>
+
+  </main>
+
+{% endblock body %}
+

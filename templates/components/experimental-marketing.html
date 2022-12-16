@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/{{subcategory.slug}}" />
+{% endblock canonical %}
+{% load static %} {% block body %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+
+<div style="position: relative; top:7vh;">
+    <div class="container-fluid my-5 pb-5">
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="fw-bold">Heading Video</h3>
+                <p>It is often said that first impressions last forever. So it is vital that your digital content reflects your primary business objectives, ethos and values.
+
+                    We live in a completely different time and the changes the rise of the internet has brought with it has concreted the necessity of high quality digital content for small and large businesses alike. Everything is online today and businesses must adapt in order to remain relevant. Among the top ways to ensure your relevance and positive impact on your potential clientele is to invest in corporate video production. Corporate videos are essential and come with a range of benefits to your company no matter its size.
+                    
+                    A corporate video's message and style may vary based on what you wish to achieve through it. A corporate video can be a company profile, company statement, company image building, business story, induction video, announcement videos, investor pitch, company culture, csr & causes, instruction & safety, and crisis communication among others.
+                    
+                    If you want to take your marketing strategy to the next level and reach more of your target audience efficiently, video content is an effective choice</p>
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 g-2 mb-3">
+                    <div class="col">
+                        <button class="btn-brown rounded-pill btn w-100"
+                            onclick="window.location.href='{%url 'create_video'%}'"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-plus">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg> Create Video</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <video controls="" autoplay="" muted="" loop="" class="w-100" style="border-radius: 10px;">
+                    <source src="{{subcategory.video.url}}">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

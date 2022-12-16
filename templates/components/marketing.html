@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    *{
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    
+    
+    .flip-card{
+        height: 400px;
+        width: 100%;
+    }
+    
+    .inner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+        transform-style:preserve-3d ;
+        /* vertical-align: middle; */
+        transition: transform 0.7s ease-in-out;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+    
+    
+    .flip-card:hover .inner {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 10px;
+    }
+    
+    .front {
+      background-color: #fff;
+      color: #fff;
+      background-position: center;
+      background-size: cover;
+      z-index: 2;
+    
+    }
+    .front *{
+        z-index: 0;
+    }
+    .front::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        /* background-color: #00000070; */
+        background-image: linear-gradient(to top , #00000090 ,#00000080 );
+        border-radius: 10px;
+        z-index: -1;
+    }
+    .back {
+      background-color: #2980b9;
+      color: white;
+      transform: rotateY(180deg);
+      overflow-y: scroll;
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+<main class="container " style="margin-bottom: 7rem; margin-top: 100px;">
+    <div class="row mb-5">
+        <h1 style="font-weight: 700;">{{marketing_page.heading}}</h1>
+        <p>{{marketing_page.paragraph}}</p>
+    </div>
+    <div class="row">
+
+        {%for market in marketing%}
+
+            <div class="col-sm-6 mb-4">
+                <div class="flip-card">
+                    <div class="inner">
+                        <div class="front p-4 d-flex flex-column justify-content-between" style="background-image: url('{{market.image.url}}');">
+                        <div class="title">
+                            <h2 class="text-center display-6 mt-3 fw-bold">{{market.title|title}}</h2>
+                            <p class="text-center">{{market.short_description}}</p>
+                        </div>
+                        <div class="cta text-center">
+                            <button class="btn btn-primary text-center">Hover to see more</button>
+                        </div>
+                        </div>
+                        <div class="back p-4">
+                            <p>{{market.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+
+
+        
+    </div>
+
+
+</main>
+
+
+{% endblock body %}
+

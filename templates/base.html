@@ -1,0 +1,860 @@
+{% load static %}
+<!doctype html>
+{% block  custom_tags %}{% endblock custom_tags %}
+<html lang="en">
+
+<head>
+    {% block custom_link %}
+    {% endblock custom_link %}
+    <!-- Required meta tags -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84644047-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-84644047-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {% block meta %} {% endblock meta %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    {% block canonical %}
+    <link rel="canonical" href="https://viacomindia.com" />
+    {% endblock canonical %}
+    {% include "required/header.html" %} {% block styles %} {% endblock styles %}
+    <style>
+        .btn-brown {
+            background-color: #ababab;
+            color: #fff;
+        }
+
+        .btn-brown:hover {
+            background-color: #ababab;
+            color: #fff;
+            box-shadow: 1px 4px 10px #888888;
+        }
+
+        .make-height-auto {
+            min-height: 35vh;
+        }
+
+        @media (max-width: 1000px) {
+            .make-height-auto {
+                min-height: auto;
+            }
+        }
+
+        .make-height-auto-yt-video {
+            min-height: 32vh;
+        }
+
+        @media (max-width: 1000px) {
+            .make-height-auto-yt-video {
+                height: 30vh;
+            }
+        }
+        .primary-header{
+    background-color: rgba(33,37,41 , .7);
+    backdrop-filter: blur(20px);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0    ;
+    min-height: 80px;
+    z-index: 1000;
+    width: 100%;
+    transition: all 350ms ease-in-out;
+}
+        
+.primary-header ul li {
+  list-style-type: none;
+  padding-left: 0 !important;
+}
+.primary-header a {
+  text-decoration: none;
+}
+
+.primary-header a,.primary-header span {
+  display: inline-block;
+}
+
+header.primary-headerprimary-header {
+  position: relative;
+}
+.primary-header nav{
+    padding-top: 0px;
+}
+
+.menu > ul {
+  text-align: right;
+  position: relative;
+  font-size: 0; /* For removing the default margin between the inline-block elements if any. */
+}
+
+.menu > ul > li {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.primary-header ul li a {
+  color: #fff;
+  font-size: 16px;
+  display: block;
+}
+
+.primary-header ul li:hover a {
+  color: rgb(227, 227, 227);
+}
+
+/* .has-sub-menu > a {
+position: relative;
+} */
+.has-sub-menu{
+    position: relative;
+}
+
+.has-sub-menu > a::after {
+  content: '';
+  border: 5px solid transparent;
+  border-top-color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.has-sub-menu:hover > a::after {
+  border-top-color: #333;
+}
+
+.sub-menu-wrapper {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  display: flex;
+  width: 250px;
+  opacity: 1;
+  display: none;
+  transition: top .5s, opacity .5s;
+  -webkit-transition: top .5s, opacity .5s;
+  -moz-transition: top .5s, opacity .5s;
+  -ms-transition: top .5s, opacity .5s;
+  -o-transition: top .5s, opacity .5s;
+  box-shadow: 0px 0px 10px #00000020;
+}
+
+.sub-menu {
+  /* width: 25%; */
+  padding-left: 0px;
+  width: 100%;
+  text-align: left;
+}
+
+.sub-menu a{
+    width: 100%;
+    padding: 14px;
+}
+
+.sub-menu-heading {
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+  cursor: initial;
+}
+
+.sub-menu a:hover {
+  color: #333;
+}
+
+.sub-menu-heading a:hover {
+  color: initial;
+}
+
+.sub-menu-wrapper a {
+  color: #000 !important;
+}
+
+.sub-menu-wrapper a:hover {
+    background-color: #00000030;
+
+    /* color: #fff !important; */
+  }
+/* .has-sub-menu:hover > .sub-menu-wrapper {
+  top: 45px;
+} */
+
+
+
+
+/* Hamburger Styling */
+
+.mobile-menu-parent{
+    position: fixed;
+    top: 0;
+    /* left: 0; */
+}
+.mobile-menu {
+  display: flex;
+  width: 30px;
+  height: 25px;
+  flex-direction: column;
+  justify-content: space-around;   
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  display: none;
+}
+
+.bar {
+  height: 3px;
+  background: #fff;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+.mobile-menu.active .bar:nth-child(1) {
+  transform: translateY(6px) rotate(-45deg);
+  -webkit-transform: translateY(6px) rotate(-45deg);
+  -moz-transform: translateY(6px) rotate(-45deg);
+  -ms-transform: translateY(6px) rotate(-45deg);
+  -o-transform: translateY(6px) rotate(-45deg);
+}
+
+.mobile-menu.active .bar:nth-child(2) {
+  transform: translateY(-6px) rotate(45deg);
+  -webkit-transform: translateY(-6px) rotate(45deg);
+  -moz-transform: translateY(-6px) rotate(45deg);
+  -ms-transform: translateY(-6px) rotate(45deg);
+  -o-transform: translateY(-6px) rotate(45deg);
+}
+
+.overflow{
+    overflow-y: scroll;
+}
+
+.primary-header.scroll{
+
+/* background-color: #000000; */
+background-color: rgba(33,37,41 , 1);
+backdrop-filter: blur(0px);
+
+/* height: 100%; */
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+
+
+  .primary-header {
+    /* left: 0;
+    top: 0;*/
+
+    top: 0;
+    /* bottom: 50%;  */
+    
+    min-height: 80px;
+    max-height: 100vh;
+    left: 0;
+    overflow-y: scroll;
+    /* min-height: 100vh; */
+  }
+  .mobile-menu {
+    display: flex;
+  }
+
+  .menu {
+    padding-top: 60px;
+    display: none;
+  }
+
+  .menu > ul > li {
+    display: block;
+    text-align: left;
+    position: relative;
+  }
+
+  .sub-menu a:hover {
+    color: #333;
+  }
+  
+  .has-sub-menu > a {
+    /* position: static; */
+    display: inline-block;
+  }
+
+  .has-sub-menu > a::after {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .primary-header nav{
+    margin-top: 80px ;
+  }
+
+  .sub-menu-wrapper {
+    position: static;
+    background: transparent;
+    flex-direction: column;
+    opacity: 1;
+    margin-top: 10px;
+    /* left: 0; */
+    top: 65px;
+    background-color: #00000030;
+    transform: translateX(0);
+    width: auto;
+    box-shadow: none;
+    display: none;
+  }
+
+  .has-sub-menu:hover > .sub-menu-wrapper {
+    opacity: initial;
+  }
+
+  .sub-menu {
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .sub-menu-heading {
+    border-color: #fff;
+  }
+
+  .sub-menu-wrapper a {
+    /* background-color: black; */
+    border-radius: 10px;
+    color: #fff !important;
+  }
+  .sub-menu-wrapper a:hover {
+    background-color: #00000030;
+
+    /* color: #fff !important; */
+  }
+  .logo-menu{
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 20px;
+  }
+
+
+}
+
+@media screen and (min-width:768px) {
+    .primary-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+    </style>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <title>
+        {{meta_title}} | India's Preferred Content Production Services Agency
+    </title>
+</head>
+
+<body>
+    {% include "required/navigation.html" %} {% block body %} {% endblock body %}
+
+
+    
+    {% if request.path == "/contactus/" or request.path == "/create_video/" or request.path == "/contact-us/" or request.path == "/career/" or request.path == "/blogs/" or request.path == "/stories/" %}
+    {% else %}
+    <div class="mb-1 p-5 text-light bg-dark rounded container-fluid mb-5">
+        <div class="container mt-5">
+            <h3 class="text-center fw-light mb-5">Let's create content that defines you and inspires others.</h3>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-4 justify-content-center">
+                <div class="col">
+                    <a class="w-100 rounded-0 btn btn-lg btn-primary"
+                        href="{%url 'create_video'%}"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-plus">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg> Create Video</a>
+                </div>
+                <div class="col">
+                    <button class="w-100 rounded-0 btn btn-lg text-light border-light"
+                        onclick="window.location.href='/contact-us#contact'">Contact us</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- <h1>{{create_video_footer}} Helo wkfnjf</h1> -->
+
+    <footer class="bg-dark text-light p-5 w-100">
+        <div class="container">
+            <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1">
+
+                <!-- About viacom india here -->
+                <div class="col">
+                    <div class="d-flex w-100">
+                        <div class="me-auto">
+                            <h4 style="border-bottom: 2px solid white;">About</h4>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page" href="/about-us">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page" href="/about-us/#team">Our team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/works">Our works</a>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" target="_blank" href="{% url 'blogs:blogs' %}">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{% url 'stories:stories' %}">Success Stories</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page" href="{% url 'vi_network:vi_network' %}">VI Network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/agencies">Agencies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'career' %}" class="nav-link text-light">Career</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/contact-us">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- About viacom india ends here -->
+
+
+                <!-- Our offerings here -->
+                <div class="col">
+                    <div class="d-flex w-100">
+                        <div class="me-auto">
+                            <h4 style="border-bottom: 2px solid white;">Our offerings</h4>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/marketplace" class="nav-link text-light firstLetterCapitalizer">curated
+                                marketplace</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/supplementary-industry-video-marketplace"
+                                class="nav-link text-light firstLetterCapitalizer">Curated Industry Video Marketplace</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/differentiated-industry-content"
+                                class="nav-link text-light firstLetterCapitalizer">Differentiated Industry Video Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#video-production-flexibility"
+                                class="nav-link text-light firstLetterCapitalizer">Video Production Flexibility</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#video-distribution-marketing-and-seeding"
+                                class="nav-link text-light firstLetterCapitalizer">Video Distribution, Marketing &
+                                Seeding</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#trending-video-content"
+                                class="nav-link text-light firstLetterCapitalizer">Trending Video Content</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- Our offerings ends here -->
+
+
+                <!-- Subscription here -->
+                <div class="col">
+                    <div class="d-flex w-100">
+                        <div class="me-auto">
+                            <h4 style="border-bottom: 2px solid white;">Subscriptions</h4>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/subscription" class="nav-link text-light">Basic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/subscription" class="nav-link text-light">Standard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/subscription" class="nav-link text-light">Premium</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/subscription/#ultimate-video-package" class="nav-link text-light">Ultimate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/subscription/#video-series" class="nav-link text-light">Video Series</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/subscription/#training-video-package" class="nav-link text-light">Training Video Package</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Subscription ends here -->
+
+
+                <!-- Others here -->
+                <div class="col">
+                    <div class="d-flex w-100">
+                        <div class="me-auto">
+                            <h4 style="border-bottom: 2px solid white;">Other Services</h4>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="{% url '24x7' %}" class="nav-link text-light">24x7 Content Creation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'experiential-marketing' %}" class="nav-link text-light">Experiential marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'website-design-development' %}" class="nav-link text-light">Website Design & Development</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'branding-design' %}" class="nav-link text-light">Branding And Design</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'social-media-management' %}" class="nav-link text-light">Social Media Marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'media-buying-placement' %}" class="nav-link text-light">Media Buying & Placement</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'dare2creative:d2c' %}" class="nav-link text-light">Dare 2 Create & Challenges</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'other_services:others' 'influencer-marketing' %}" class="nav-link text-light">Influencer Marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'academics' %}" class="nav-link text-light">VI Academy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'creators' %}" class="nav-link text-light">Creators</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Others ends here -->
+
+
+                <!-- Terms and conditions here -->
+                <div class="col">
+                    <div class="d-flex w-100">
+                        <div class="me-auto">
+                            <h4 style="border-bottom: 2px solid white;">Our Policy</h4>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/work-terms-and-conditions" class="nav-link text-light">Work
+                                terms and conditions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/brand-terms-and-conditions" class="nav-link text-light">Brand
+                                terms & conditions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/changes-and-refunds-policy"
+                                class="nav-link text-light">Changes and Refunds Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/creator-term-conditions" class="nav-link text-light">Creator
+                                terms &amp;
+                                conditions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/data-protection-policy" class="nav-link text-light">Data
+                                protection policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/terms-and-condition/acceptable-use-policy" class="nav-link text-light">Acceptable
+                                use policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/contactus" class="nav-link text-light">Help</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- Terms and conditions ends here -->
+
+            </div>
+            <hr>
+            <div class="container justify-content-center">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+                    <div class="col">
+                        <p class="text-start">
+                            Email us at
+                            <br>
+                            <a href="mailto:video@viacomindia.com" class="text-white " style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-mail">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg> video@viacomindia.com
+                                
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="text-start">
+                            Call us on
+                            <br>
+                            <a href="tel:9717337326" class="text-white " style="text-decoration: none;">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-smartphone">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                </svg> 9717337326
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="text-start">
+                            WhatsApp us on
+                            <br>
+                            <a href="//api.whatsapp.com/send?phone=917208999001&text=I%20am%20Interested%20in%20your%20Services" class="text-white " style="text-decoration: none;" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-message-circle">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg> 7208999001
+                                
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="text-start">
+                            Telephone no.
+                            <br>
+                            <a href="tel:0124-518-0499" class="text-white " style="text-decoration: none;">
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-phone">
+                                    <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg> 0124-518-0499
+                        </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row justify-content-center h-100">
+                <div class="col my-auto d-flex">
+                    <img src="{{imageclientand_vi.image_VI.url}}" class="mx-auto" style="width:100px;">
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center h-100">
+                <div class="col-sm-4 my-auto">
+                    <p class="fw-bold text-center">We also support <img
+                            src="https://res.cloudinary.com/ninety-seconds/image/upload/c_thumb,fl_lossy,fl_progressive/v1/-homepage-icons/-footer/badges-cards.svg"
+                            alt=""></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>Copyright © 2015-2022 <span class="fw-bold">Viacom India</span>. All rights reserved</p>
+                </div>
+                <div class="col-sm-4">
+                    <div class="d-flex justify-content-between">
+                        <a class="text-white" href="https://www.youtube.com/c/ViacomIndiatv" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-youtube">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a class="text-white" href="https://www.facebook.com/ViacomIndiaLLP" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-facebook">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a class="text-white" href="https://www.instagram.com/viacomindia/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-instagram">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a class="text-white" href="https://www.linkedin.com/company/viacomindia/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-linkedin">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a class="text-white" href="https://twitter.com/Viacomindia" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-twitter">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="text-white" href="http://pinterest.com/viacomindia/" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" stroke="currentColor">
+                                <path d="M5.077 9.457c0-.778.136-1.513.404-2.199a5.63 5.63 0 0 1 1.121-1.802 7.614 7.614 0 0 1 1.644-1.329 7.513 7.513 0 0 1 2.002-.844 8.57 8.57 0 0 1 2.185-.281c1.139 0 2.199.241 3.182.721a6.021 6.021 0 0 1 2.391 2.094c.614.915.919 1.95.919 3.104 0 .692-.068 1.369-.207 2.031a8.28 8.28 0 0 1-.646 1.913 6.605 6.605 0 0 1-1.082 1.617 4.723 4.723 0 0 1-1.568 1.114 4.962 4.962 0 0 1-2.045.417c-.489 0-.977-.115-1.459-.346-.482-.23-.828-.546-1.036-.951-.073.281-.173.687-.306 1.218-.128.53-.214.872-.252 1.027-.04.154-.114.411-.222.767a5.183 5.183 0 0 1-.281.769l-.344.674a7.98 7.98 0 0 1-.498.838c-.181.262-.405.575-.672.935l-.149.053-.099-.108c-.107-1.133-.162-1.811-.162-2.035 0-.663.079-1.407.235-2.233.153-.825.395-1.862.72-3.109.325-1.246.511-1.979.561-2.196-.229-.467-.345-1.077-.345-1.827 0-.599.187-1.16.562-1.688.376-.526.851-.789 1.427-.789.441 0 .783.146 1.028.439.246.292.366.66.366 1.109 0 .476-.158 1.165-.476 2.066-.318.902-.476 1.575-.476 2.022 0 .453.162.832.486 1.129a1.68 1.68 0 0 0 1.179.449c.396 0 .763-.09 1.104-.271a2.46 2.46 0 0 0 .849-.733 6.123 6.123 0 0 0 1.017-2.225c.096-.422.17-.823.216-1.2.049-.379.07-.737.07-1.077 0-1.247-.396-2.219-1.183-2.915-.791-.696-1.821-1.042-3.088-1.042-1.441 0-2.646.466-3.611 1.401-.966.932-1.452 2.117-1.452 3.554 0 .317.048.623.139.919.089.295.186.53.291.704.104.171.202.338.291.492.09.154.137.264.137.33 0 .202-.053.465-.16.79-.111.325-.242.487-.4.487-.015 0-.077-.011-.185-.034a2.21 2.21 0 0 1-.979-.605 3.17 3.17 0 0 1-.659-1.022 6.986 6.986 0 0 1-.352-1.169 4.884 4.884 0 0 1-.132-1.153z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="row justify-content-center">-->
+            <!--    <div class="col">-->
+            <!--        Designed and developed with <i class="fas fa-heart text-danger"></i> by <a class="text-decoration-none" href="//facebook.com/encodestudio.in" target="_blank">Encode studio</a>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </div>
+
+    </footer>
+        <!-- Optional JavaScript; choose one of the two! -->   
+        <script>
+               const myDropdown = document.getElementById('myDropdown')
+                myDropdown.addEventListener('show.bs.dropdown', event => {
+                // do something...
+                })
+        </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    {% include "required/footer.html" %} {% block scripts %} {% endblock scripts %}
+    <script>
+        const changeYoutubeVIdeo = (videoLink) => {
+            console.log(videoLink)
+            var youtube_video_here = document.getElementById('youtube_video_here')
+            var newYTVideo = "https://www.youtube.com/embed/" + videoLink + "?version=3&rel=0&autoplay=0&loop=1&controls=1&"
+            youtube_video_here.setAttribute("src", newYTVideo)
+        }
+        $('#ourWorkModel').on('hidden.bs.modal', function (e) {
+            var youtube_video_here = document.getElementById('youtube_video_here')
+            youtube_video_here.setAttribute("src", "")
+        })
+
+</script>
+
+
+    
+    <script>
+
+        function onSubmitForm(token) {
+            // token = $("textarea[name='h-captcha-response']").val();
+            $.ajax({
+                url: '/verify-hcaptcha-token',
+                method: 'post',
+                data: {
+                    "h-captcha-response": token,
+                    "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                },
+                success: (res) => {
+                    console.log(res)
+                    if (res == 'SUCCESS') {
+                        $("button[name='submitButton']").removeAttr('disabled')
+                    } else {
+                        alert("Captcha verification failed try again later!")
+                    }
+                },
+                error: (err) => {
+                    console.log(`Error: ${err}`)
+                    alert(`Error Try again later!`)
+                }
+            })
+        };
+    </script>
+          <script>
+            $(document).ready(function() {
+            
+            var hamburger = $('.mobile-menu'),
+                menu      = $('.menu'),
+                sub_menu  = $('.sub-menu-wrapper'),
+                menu_item = $('.has-sub-menu');
+                sub_items = $('.sub-menu');
+            
+            hamburger.on('click', function() {
+                console.log("first")
+                menu.slideToggle();
+                $(this).toggleClass('active');
+            });
+            
+            menu_item.on('click', function() {
+                $(this).children('.sub-menu-wrapper').slideToggle();
+
+            });
+            sub_items.on('click', function() {
+                menu.slideToggle();
+
+            });
+
+            const header = document.querySelector(".primary-header")
+
+            window.onscroll = () => {
+                $('.sub-menu-wrapper').slideUp(200);
+                if(document.documentElement.scrollTop > 80){
+                    header.classList.add("scroll")
+                }else{
+                    header.classList.remove("scroll")
+                }
+            }
+            
+            });
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

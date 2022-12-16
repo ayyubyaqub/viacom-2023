@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block custom_link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock custom_link %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    main{
+        overflow: hidden;
+    }
+    .header.owl-carousel{
+        position: relative;
+        height: 300px;
+        padding: 20px 0;
+        padding-bottom: 40px;
+    }
+    .owl-stage-outer{
+        height: 100%;
+        width: 80%;
+        margin: 0px auto;
+        /* margin-bottom: 20px; */
+    }
+    /* .owl-nav{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5rem;
+        height: 100%;
+    } */
+    /* .owl-nav{
+        display: flex;
+        align-items: center;
+    } */
+    
+    .owl-dots{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    .header>.owl-stage-outer *{
+        height: 100%;
+    }
+
+    
+    .owl-prev , .owl-next{
+        /* background-color:black !important ; */
+        /* background-color: white !important;
+        color: black; */
+    
+    }
+    /* .owl-prev span , .owl-next span{
+        font-size: 40px;
+        color: black !important;
+    } */
+    /* .owl-carousel.owl-carousel-opportunity .owl-item , .owl-carousel.owl-carousel-internship .owl-item  { */
+        /* display: flex; */
+        /* width: 100px  !important;
+        min-width: 100px; */
+        /* justify-content: center; */
+        /* padding-bottom: 0px; */
+    /* } */
+    
+    .item , .item img{
+        border-radius: 10px;
+    }
+    .item .icon{
+        height: 150px;
+        width: 150px;
+    }
+    .item img{
+        object-fit: cover;
+        height: 100%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    /* .owl-carousel.owl-carousel-opportunity{
+        
+        padding-bottom: 0px;
+    }
+} */
+    
+    .owl-carousel-opportunity .owl-carousel{
+        height: auto;
+    }
+    .owl-carousel-opportunity .owl-item{
+        /* height: auto; */
+        /* justify-content: flex-start; */
+        /* width: 200px !important; */
+    }
+    
+    .owl-stage-outer{
+    z-index: 10;
+    }
+    /* .owl-nav{
+
+        z-index: 1;
+        margin-top: 0 !important;
+    } */
+    
+    @media screen and (max-width: 805px) {
+        .owl-stage-outer , .custom-container , .heading {
+            width: 90% !important;
+        }
+        /* .owl-nav{
+            padding: 0 1rem;
+        } */
+    }
+
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+<main style="margin-bottom: 7rem; margin-top: 110px;">
+    <div class="heading mx-auto" style="width:80% ;">
+        <h1  class="custom-container fw-bold display-5">{{d2c_page.title}}</h1>
+        <p>{{d2c_page.short_description}}</p>
+    </div>
+    <div class="owl-carousel header owl-theme">
+        {%for poster in d2c_page.d2c_posters_set.all%}
+
+            <div class="item">
+                <a href="{{poster.url}}">
+                    <img src="{{poster.image.url}}" height="100%" width="100%" alt="">
+
+                </a>
+            </div>
+
+        {%endfor%}
+
+        
+    </div>
+
+    {% for super in super_categories %}
+    <div class="internship mt-5" >
+        <div class="heading mx-auto mb-5" style="width:80%;">
+            <h2  class="custom-container fw-bold ">{{super.title}}</h2>
+            <p>{{super.description}}</p>
+        </div>
+
+        <div class="owl-carousel owl-theme owl-carousel-internship">
+            
+            {%for i in super.category_set.all%}
+                <div class="item ">
+                    <a href="{% url 'dare2creative:category' i.slug %}" class="text-decoration-none">
+                        <div class="icon mb-2" >
+                            <img src="{{i.logo.url}}"  alt="">
+                        </div>
+                        <div class="icon-title text-center text-decoration-none text-black">
+                            {{i.text}}
+                        </div>
+                        
+                    </a>
+                </div>
+            {%endfor%}
+            
+            
+            
+                
+            
+            
+        </div>
+    </div>
+    {%endfor%}
+
+    <!-- <div class="opportunity mt-5 mb-5" >
+        <div class="heading mx-auto mb-5" style="width:80%;">
+            <h2  class="custom-container fw-bold ">Opportunities on Viacom</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia deleniti voluptatibus, recusandae qui hic asperiores ipsam aliquid facilis nihil illum atque saepe sint animi odio! Eligendi, nobis? Itaque, non nulla.</p>
+        </div>
+
+        <div class="owl-carousel owl-theme owl-carousel-opportunity">
+            
+            <div class="item">
+                <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" height="50px" width="50px" alt="">
+            </div>
+                
+            
+            
+            <div class="item">
+                <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" height="50px" width="500px" alt="">
+            </div>
+            <div class="item">
+                <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" height="50px" width="50px" alt="">
+            </div>
+            <div class="item">
+                <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" height="50px" width="50px" alt="">
+            </div>
+            <div class="item">
+                <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" height="50px" width="50px" alt="">
+            </div>
+                
+            
+            
+        </div>
+    </div> -->
+
+      
+  </main>
+
+
+{% endblock body %}
+
+
+{% block scripts %} 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $('.header').owlCarousel({
+        center: true,
+        items:2,
+        loop:true,
+        navigation:true,
+        dots:true,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        margin:30,
+        
+
+    })
+    // $('.owl-carousel-opportunity').owlCarousel({
+    //     center: true,
+    //     items:2,
+    //     loop:true,
+    //     nav:true,
+    //     dots:true,
+    //     margin:50,
+    //     responsive:{
+    //         600:{
+    //             items:
+
+    //         }
+    //     }
+
+    // })
+    $('.owl-carousel').owlCarousel({
+    loop:false,
+    margin:45,
+    nav:true,
+    dots:true,
+    autoWidth:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
+{% endblock scripts %}
+

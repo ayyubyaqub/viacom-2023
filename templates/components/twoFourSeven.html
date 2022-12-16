@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    *{
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .bg-blurry {
+        background: rgba(33, 33, 36, 0.3);
+        backdrop-filter: blur(250px);
+        color: white;
+        font-weight: bold;
+    }
+    
+    .image img{
+        object-fit: cover;
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+ 
+
+<main class="container-fluid " style="margin-bottom: 7rem; margin-top: 100px;">
+    <div class="heading row">
+        <div class="col-12">
+            <h1 class="fw-bolder display-5">{{page.heading}}</h1>
+            <p>{{page.paragraph}}</p>
+        </div>
+    </div>
+
+    {%for card in cards%}
+            <div class="row mt-5 d-flex {% cycle 'flex-row' 'flex-row-reverse' %}">
+                <div class="col-md-7 content mb-4 mb-md-0" style="padding-right: 2rem;">
+                    <h2 class="fw-bold mb-3">{{card.title|title}}</h2>
+                    <p class="markdown">
+                        {{card.body}}
+                    </p>
+                </div>
+                <div class="col-md-5  image">
+                    <div style="height: 350px; width:100%;" >
+                        <img src="{{card.image.url}}" width="100%" height="100%" alt="">
+                    </div>
+                </div>
+            </div>
+        
+
+    {%endfor%}
+
+
+
+    <div class="row mt-5">
+        <div class="heading mb-5">
+            <h2 class="fw-bold">Integrated Solutions</h2>
+        </div>
+        {%for i in integrated%}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="img-div" style="height: 200px;">
+                    <img class="card-img-top h-100" src="{{i.image.url}}" alt="Card image cap" style="object-fit: cover; object-position:center;">
+
+                  </div>
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{i.title | title}}</h5>
+                  <p class="card-text">{{i.description}}</p>
+                </div>
+              </div>
+        </div>
+        {%endfor%}
+    </div>
+
+<!-- <hr class="m-0 mt-5"> -->
+{%if page.sub_image_1%}
+
+    <div class="row" style="margin-top: 5rem;">
+        <div class="d-none d-md-block">
+            <div class="row row-cols-2 g-3">
+                {%if page.sub_image_1%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_1.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_2%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_2.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_3%}
+                <div class="col order-1">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_3.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_4%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_4.url}}">
+                </div>
+                {%endif%}
+    
+            </div>
+        </div>
+    
+        <div class="d-block d-md-none">
+            <div class="row row-cols-1 g-3">
+                {%if page.sub_image_1%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_1.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_2%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_2.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_3%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_3.url}}">
+                </div>
+                {%endif%}
+                {%if page.sub_image_4%}
+                <div class="col">
+                    
+                        <img class="img-fluid" src="{{page.sub_image_4.url}}">
+                </div>
+                {%endif%}
+            </div>
+        </div>
+    
+    
+    
+    
+       
+        
+      </div>
+{%endif%}
+
+
+    
+    
+
+  </main>
+
+
+{% endblock body %}
+

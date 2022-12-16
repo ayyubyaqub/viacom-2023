@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block canonical %}
+<link rel="canonical" href="https://viacomindia.com/subscription" />
+{% endblock canonical %}
+{% block styles %}
+<style>
+    *{
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+    }
+    body{
+        background-color: rgba(33, 33, 36);
+    }
+    
+    .carouselImage{
+      height: 45rem;
+        width: 100%;
+        object-fit: cover;
+    }
+    .bg-blurry {
+        background: rgba(33, 33, 36, 1);
+        backdrop-filter: blur(250px);
+        color: white;
+        font-weight: bold;
+    }
+    .tab-links{
+        color: #fff;
+    }
+    .tab-links:hover{
+        color: #818181;
+    }
+    .banner{
+        background: #202020;
+        border: 1px solid rgba(255,255,255,.25);
+        /* padding: 16px 20px 24px; */
+        border-radius: 5px;
+        font-size: 18px;
+        line-height: 28px;
+        margin:6rem 0 0;
+        /* margin: 28px -20px 0; */
+    }
+    
+    @media only screen and (max-width: 990px) {
+        .banner{
+            margin:3rem 0 0;
+        }
+        main{
+            margin-bottom: 3rem !important;
+        }
+        .video{
+            margin-top: 2rem;
+        }
+    }
+    
+    </style>
+{% endblock styles %}
+{% load static %} {% block body %}
+
+
+<main class="container" style="margin-bottom: 6rem; margin-top: 130px;">
+    <div class="row">
+        
+        <div class="col-lg-6 col-sm-12"  style="padding-right : 2rem;">
+            <div class="company-details">
+                <div class="company">
+                    <img src="{{story.image.url}}" width="60" alt="">
+                    <h1 class="fw-bold fs-2 mt-2">{{story.company_name | title}}</h1>
+                </div>
+                <div class="description" >
+                    <p class="lead w-75">{{story.card_description}}</p>
+                </div>
+            </div>
+            <div class="content mt-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link tab-links  active" id="problem-tab" data-bs-toggle="tab" data-bs-target="#problem" type="button" role="tab" aria-controls="problem" aria-selected="true">Challenge</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link tab-links " id="solution-tab" data-bs-toggle="tab" data-bs-target="#solution" type="button" role="tab" aria-controls="solution" aria-selected="false">Solution</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link tab-links " id="result-tab" data-bs-toggle="tab" data-bs-target="#result" type="button" role="tab" aria-controls="result" aria-selected="false">Result</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active mt-4" id="problem" role="tabpanel" aria-labelledby="problem-tab">
+                        <h2>Challenge</h2>
+                        {{story.problem}}
+                    </div>
+                    <div class="tab-pane fade mt-4" id="solution" role="tabpanel" aria-labelledby="solution-tab">
+                        <h2>Solution</h2>
+                        {{story.solution}}
+                    </div>
+                    <div class="tab-pane fade mt-4" id="result" role="tabpanel" aria-labelledby="result-tab">
+                        <h2>Result</h2>
+                        {{story.result}}
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6 video col-sm-12">
+            <iframe width="100%" height="100%" src="{{models.video_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="banner d-flex flex-column flex-lg-row py-3 p-3 justify-content-between  align-items-center">
+        <div class="text-center flex-grow-1">
+        Like what you see? Start your video making journey with us today.
+        </div>
+        <a class="btn btn-primary" href="{% url 'category' 'curated-video-marketplace' %}">
+        Visit our marketplace now
+        </a>
+    </div>
+  </main>
+ 
+
+{% endblock body %}
+
