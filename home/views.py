@@ -15,7 +15,8 @@ from home.models import Academic_page, Academics, Contact_Us_Page, Home_work_you
 # Create your views here.
 from time import time
 
-MailID = 'contact@viacomindia.com'
+# MailID = 'contact@viacomindia.com'
+MailID = 'viacomindiavideo@gmail.com'
 
 
 def verifyHcaptchaToken(request):
@@ -337,7 +338,7 @@ def contactus(request):
             'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
             '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
             MailID,
-            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com']
+            ['viacomindiavideo@gmail.com','ayyubkhan4341@gmail.com']
             
          
         )

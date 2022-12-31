@@ -228,3 +228,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = "lktdcismmsrrshgj"
+
+
+CSRF_TRUSTED_ORIGINS=['https://viacomindia.com']
