@@ -36,11 +36,7 @@ CORS_ALLOWED_ORIGINS = [
                  '.herokuapp.com', 'viacomindia.com', 'localhost', '127.0.0.1' , '43.204.239.248'
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",'www.viacomindia.in', 'viacomindia.in', 'viacomindia.com', 'https://viacomindia.com' , 'http://viacomindia.com' , 'https://www.viacomindia.com' , 'http://www.viacomindia.com','www.viacomindia.com',
-                 '.herokuapp.com', 'viacomindia.com', 'localhost', '127.0.0.1' , '43.204.239.248'
-]
+
 
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
@@ -121,11 +117,20 @@ WSGI_APPLICATION = 'viacom_india.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "ddc2j0bjgbt5ch",
-        'USER': "ojusybbvvppzdf",
-        'PASSWORD': "9a3d56257539f956759722a91f2789820f28819365ab8b1901a0c275865a5c95",
-        'HOST': "ec2-52-70-186-184.compute-1.amazonaws.com",
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "Mukeshahir$ayviacom",
+        'HOST': "database-1.cl3rooputcor.ap-south-1.rds.amazonaws.com",
         'PORT': 5432,
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': "ddc2j0bjgbt5ch",
+        # 'USER': "ojusybbvvppzdf",
+        # 'PASSWORD': "9a3d56257539f956759722a91f2789820f28819365ab8b1901a0c275865a5c95",
+        # 'HOST': "ec2-52-70-186-184.compute-1.amazonaws.com",
+        # 'PORT': 5432,
+
+        
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -138,13 +143,13 @@ DATABASES = {
 #     },
 # }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'TIMEOUT' : 3600*24*30,
-        'LOCATION': 'redis://127.0.0.1:6379',
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#         'TIMEOUT' : 3600*24*30,
+#         'LOCATION': 'redis://127.0.0.1:6379',
+#     }
+# }
 
 # CACHE_MIDDLEWARE_ALIAS="nothing"
 CACHE_MIDDLEWARE_SECONDS=3600*24*30

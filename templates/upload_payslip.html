@@ -1,0 +1,38 @@
+
+<form action="{%url 'contactus'%}" method="post">
+    {% csrf_token %}
+   
+    <textarea class="form-control mb-3" name="data" id="" cols="100" rows="15" required></textarea>
+    <input type="submit" value="submit" class="btn btn-primary">
+</form>
+    <br>
+    **excel should contain <b>mobile</b>  and <b>name</b> field with same spelling 
+    <br>
+    **Make Sure empty data should contain 0 in excel <br>
+    **Make Sure Data should be in the below format<br>
+    <b>[</b><pre>
+        {
+            "mobile": "xxxx",
+            "name": "xxxx",
+            "Designation": "xxxx",
+            "Location": "xxxx",
+            "Date of Joining": "xxxx",
+            "Pay Days": "xxxx",
+            "CTC Earned": "xxxx",
+            "etc..":"xxxx"
+      
+           
+        },
+        {
+            "mobile": "xxxx",
+            "name": "xxxx",
+            "Designation": "xxxx",
+            "Location": "xxxx",
+            "Date of Joining": "xxxx",
+            "Pay Days": "xxxx",
+            "CTC Earned": "xxxx",
+            "etc..":"xxxx"
+        },
+        {
+            ...n
+        }</pre><b>]</b>
