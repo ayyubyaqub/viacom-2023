@@ -13,7 +13,7 @@
             <div class="col h-100">
                 <div class="containers d-flex justify-content-evenly flex-nowrap flex-column"
                     style="border: 1px solid black;">
-                    <form action="{% url 'contactus/' %}" method="post">
+                    <form action="{% url 'contactus' %}" method="post">
                         {% csrf_token %}
                         <div class="text-center bg-dark text-white mb-4">
                             <h4>Fill the Form</h4>
