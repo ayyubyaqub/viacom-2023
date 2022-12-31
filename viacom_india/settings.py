@@ -116,19 +116,19 @@ WSGI_APPLICATION = 'viacom_india.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': "postgres",
-        # 'USER': "postgres",
-        # 'PASSWORD': "Mukeshahir$ayviacom",
-        # 'HOST': "database-1.cl3rooputcor.ap-south-1.rds.amazonaws.com",
-        # 'PORT': 5432,
-
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "ddc2j0bjgbt5ch",
-        'USER': "ojusybbvvppzdf",
-        'PASSWORD': "9a3d56257539f956759722a91f2789820f28819365ab8b1901a0c275865a5c95",
-        'HOST': "ec2-52-70-186-184.compute-1.amazonaws.com",
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "Mukeshahir$ayviacom",
+        'HOST': "database-1.cl3rooputcor.ap-south-1.rds.amazonaws.com",
         'PORT': 5432,
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': "ddc2j0bjgbt5ch",
+        # 'USER': "ojusybbvvppzdf",
+        # 'PASSWORD': "9a3d56257539f956759722a91f2789820f28819365ab8b1901a0c275865a5c95",
+        # 'HOST': "ec2-52-70-186-184.compute-1.amazonaws.com",
+        # 'PORT': 5432,
 
         
         # 'ENGINE': 'django.db.backends.sqlite3',
