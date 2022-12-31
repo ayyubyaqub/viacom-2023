@@ -52,6 +52,7 @@
                                     <div class="h-captcha" data-sitekey="20f8bf2c-ced8-4abe-80f1-d55c27a91dd9"
                                         data-callback="onSubmitForm" data-size="compact"></div>
                                 </div> -->
+                                {% csrf_token %}
                                 <div class="col">
                                     <button name="submitButton" type="submit" class="btn btn-lg btn-primary w-100">Send</button>
                                 </div>
