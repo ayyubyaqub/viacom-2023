@@ -319,7 +319,11 @@ def shorts_view(request , num=1):
     }
     return render(request, 'components/shorts.html', params)
 
+
+from django.views.decorators.csrf import csrf_exempt
+
 import json
+@csrf_exempt
 def contactus(request):
     if request.method == 'POST':
         fullname = request.POST.get('fullname')
