@@ -123,11 +123,14 @@ DATABASES = {
         'HOST': "database-1.cl3rooputcor.ap-south-1.rds.amazonaws.com",
         'PORT': 5432,
 
+
+
+
         # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': "ddc2j0bjgbt5ch",
-        # 'USER': "ojusybbvvppzdf",
-        # 'PASSWORD': "9a3d56257539f956759722a91f2789820f28819365ab8b1901a0c275865a5c95",
-        # 'HOST': "ec2-52-70-186-184.compute-1.amazonaws.com",
+        # 'NAME': "ddbf1ied3veafo",
+        # 'USER': "mjsgylrkkpzbzn",
+        # 'PASSWORD': "7c8f82d9441653583ffd62a5fad6e8e3e831efaff9e2ead794399b298dca7505",
+        # 'HOST': "ec2-34-192-210-139.compute-1.amazonaws.com",
         # 'PORT': 5432,
 
         

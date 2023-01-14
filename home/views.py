@@ -38,45 +38,45 @@ def verifyHcaptchaToken(request):
 
 
 def index(request):
-    # imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
-    # clients = Clients.objects.all()[:10]
-    # super_categories = SuperCategory.objects.order_by('serial_number')
-    # homecarousel = Homecarousel.objects.all()
-    # work_video = Home_work_youtube_video.objects.all().first()
-    # homepageheading = homePageHeading.objects.all()
-    # homevideo = Home_page_video.objects.first()
+    imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
+    clients = Clients.objects.all()[:10]
+    super_categories = SuperCategory.objects.order_by('serial_number')
+    homecarousel = Homecarousel.objects.all()
+    work_video = Home_work_youtube_video.objects.all().first()
+    homepageheading = homePageHeading.objects.all()
+    homevideo = Home_page_video.objects.first()
 
-    # params = {
-    #     'meta_title': 'Viacom India',
-    #     'meta_description': "We create videos for brands, businesses, and agencies anywhere in India. See our video marketplace & Start creating videos for creative representation of your brand.",
-    #     'meta_keywords':'video production company, corporate video, video agency, video company, advertising agency, corporate video production company',
-    #     'clients': clients,
-    #     'super_categories': super_categories,
-    #     'carousels': homecarousel,
-    #     'homepageheading': homepageheading,
-    #     'homevideo': homevideo,
-    #     'work_video': work_video,
-    #     'imageclientand_vi': imageclientand_vi,
-    # }
-    # return render(request, 'components/home.html', params)
-    return HttpResponse('''<!doctype html>
-<title>Site Maintenance</title>
-<style>
-  body { text-align: center; padding: 150px; }
-  h1 { font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
-  article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-  a { color: #dc8100; text-decoration: none; }
-  a:hover { color: #333; text-decoration: none; }
-</style>
+    params = {
+        'meta_title': 'Viacom India',
+        'meta_description': "We create videos for brands, businesses, and agencies anywhere in India. See our video marketplace & Start creating videos for creative representation of your brand.",
+        'meta_keywords':'video production company, corporate video, video agency, video company, advertising agency, corporate video production company',
+        'clients': clients,
+        'super_categories': super_categories,
+        'carousels': homecarousel,
+        'homepageheading': homepageheading,
+        'homevideo': homevideo,
+        'work_video': work_video,
+        'imageclientand_vi': imageclientand_vi,
+    }
+    return render(request, 'components/home.html', params)
+#     return HttpResponse('''<!doctype html>
+# <title>Site Maintenance</title>
+# <style>
+#   body { text-align: center; padding: 150px; }
+#   h1 { font-size: 50px; }
+#   body { font: 20px Helvetica, sans-serif; color: #333; }
+#   article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+#   a { color: #dc8100; text-decoration: none; }
+#   a:hover { color: #333; text-decoration: none; }
+# </style>
 
-<article>
-    <h1>We&rsquo;ll be back soon!</h1>
-    <div>
-        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="contactus">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
-        <p>&mdash; The Team</p>
-    </div>
-</article>''')
+# <article>
+#     <h1>We&rsquo;ll be back soon!</h1>
+#     <div>
+#         <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="contactus">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
+#         <p>&mdash; The Team</p>
+#     </div>
+# </article>''')
 
 
 def category(request, slug):
@@ -326,47 +326,50 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 @csrf_exempt
 def contactus(request):
-    if request.method == 'POST':
-        fullname = request.POST.get('fullname')
-        email = request.POST.get('email')
-        mobile = request.POST.get('phone')
-        requirement = request.POST.get('website')
-        message = request.POST.get('description')
-        Interest_Person.objects.create(fullname=fullname, email=email, mobile=mobile, requirement=requirement, message=message)
-        email = EmailMessage(
-             "A customer contacted us",
-            'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
-            '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
-            MailID,
-            ['viacomindiavideo@gmail.com','ayyubkhan4341@gmail.com']
+    # if request.method == 'POST':
+    #     fullname = request.POST.get('fullname')
+    #     email = request.POST.get('email')
+    #     mobile = request.POST.get('phone')
+    #     requirement = request.POST.get('website')
+    #     message = request.POST.get('description')
+    #     Interest_Person.objects.create(fullname=fullname, email=email, mobile=mobile, requirement=requirement, message=message)
+    #     email = EmailMessage(
+    #          "A customer contacted us",
+    #         'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
+    #         '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
+    #         MailID,
+    #         ['viacomindiavideo@gmail.com','ayyubkhan4341@gmail.com']
             
          
-        )
-        email.send(fail_silently=False)
+    #     )
+    #     email.send(fail_silently=False)
         
-        messages.success(request, 'Message has been sent successfully!')
-    Contact_us_location = contact_us_location.objects.all()
-    imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
-    contact_us_page = Contact_Us_Page.objects.all().first()
-    params = {
-        # "meta_keywords" : contact_us_page.meta_keywords,
-        # "meta_description" : contact_us_page.meta_description,
-        # "meta_title" : contact_us_page.meta_title,
-        'contact_us_location': Contact_us_location,
-        'imageclientand_vi': imageclientand_vi
-    }
-    return render(request, 'components/contactus.html', params)
-    # if request.method=='POST':
-    #     data=request.POST.get('data')
-    #     data1=json.loads(data)
-    #     for i in data1:
+    #     messages.success(request, 'Message has been sent successfully!')
+    # Contact_us_location = contact_us_location.objects.all()
+    # imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
+    # contact_us_page = Contact_Us_Page.objects.all().first()
+    # params = {
+    #     # "meta_keywords" : contact_us_page.meta_keywords,
+    #     # "meta_description" : contact_us_page.meta_description,
+    #     # "meta_title" : contact_us_page.meta_title,
+    #     'contact_us_location': Contact_us_location,
+    #     'imageclientand_vi': imageclientand_vi
+    # }
+    # return render(request, 'components/contactus.html', params)
+    if request.method=='POST':
+        data=request.POST.get('data')
+        data1=json.loads(data)
+        for i in data1:
           
-    #         serial_number=i['serial_number']
-    #         super_category_name=i['super_category_name']
-    #         description=i['description']
-    #         SuperCategory.objects.create(serial_number=serial_number,super_category_name=super_category_name,description=description,)
+            serial_number=i['serial_number']
+            super_category=1
+            category=i['category']
+            description=i['description']
+            image=i['image']
+            obj=Categories.objects.create(serial_number=serial_number,description=description,category=category,image=image)
+            obj.set(super_category=1)
            
-    # return render(request,'upload_payslip.html')
+    return render(request,'upload_payslip.html')
 
 
 def works(request):
