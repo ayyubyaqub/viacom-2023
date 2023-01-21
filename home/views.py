@@ -16,7 +16,8 @@ from home.models import Academic_page, Academics, Contact_Us_Page, Home_work_you
 from time import time
 
 # MailID = 'contact@viacomindia.com'
-MailID = 'viacomindiavideo@gmail.com'
+# MailID = 'viacomindiavideo@gmail.com'
+MailID = 'viacomindia99@gmail.com'
 
 
 def verifyHcaptchaToken(request):
@@ -87,7 +88,6 @@ def category(request, slug):
         params = {
             'meta_title': supercategory.super_category_name,
             'meta_description': supercategory.description,
-  
             'supercategory': supercategory,
             'imageclientand_vi': imageclientand_vi
         }
@@ -172,20 +172,20 @@ def create_videos(request):
         reference_link = request.POST.get('reference_link[]')
         Customer.objects.create(brand_name=brand_name, website=website, first_name=first_name, last_name=last_name, email=email, phone=phone, video_categories=video_categories, other_project_details=other_project_details,
                                 project_description=project_description, project_country=project_country, project_city_state=project_city_state, project_pincode=project_pincode, delivery_speed=delivery_speed, project_budget=project_budget, reference_link=reference_link)
-        send_mail(
-            "A customer booked our service",
-            "Brand Name : " +  str(brand_name) + "\nWebsite : " + str(website) + "\nFirst Name : " + str(first_name) + "\nLast Name : "
-            + str(last_name) + "\nEmail : " + str(email) + "\nPhone number : " + str(phone) + "\nVideo Category : " + str(video_categories) + "\nOther Project Details : " 
+        # send_mail(
+        #     "A customer booked our service",
+        #     "Brand Name : " +  str(brand_name) + "\nWebsite : " + str(website) + "\nFirst Name : " + str(first_name) + "\nLast Name : "
+        #     + str(last_name) + "\nEmail : " + str(email) + "\nPhone number : " + str(phone) + "\nVideo Category : " + str(video_categories) + "\nOther Project Details : " 
 
-            +  str(other_project_details) + "\nProject Description : " + str(project_description) + "\nProject Country : " + str(project_country) + "\nCity State : " + str(project_city_state) +
-            "\nPincode : " + str(project_pincode) + "\nDelivery Speed : " + str(delivery_speed) +
-            "\nBudget : " + str(project_budget) + "\nReference Link : " + str(reference_link),
+        #     +  str(other_project_details) + "\nProject Description : " + str(project_description) + "\nProject Country : " + str(project_country) + "\nCity State : " + str(project_city_state) +
+        #     "\nPincode : " + str(project_pincode) + "\nDelivery Speed : " + str(delivery_speed) +
+        #     "\nBudget : " + str(project_budget) + "\nReference Link : " + str(reference_link),
 
-            MailID,
-            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com'],
+        #     'viacomindia99@gmail.com',
+        #     ['viacomindiavideo@gmail.com', 'contact@viacomindia.com'],
 
-            fail_silently=False,
-        )
+        #     fail_silently=False,
+        # )
         messages.success(request, 'Message has been sent successfully!')
     obj = create_video.objects.all().first()
     imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
@@ -326,50 +326,36 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 @csrf_exempt
 def contactus(request):
-    # if request.method == 'POST':
-    #     fullname = request.POST.get('fullname')
-    #     email = request.POST.get('email')
-    #     mobile = request.POST.get('phone')
-    #     requirement = request.POST.get('website')
-    #     message = request.POST.get('description')
-    #     Interest_Person.objects.create(fullname=fullname, email=email, mobile=mobile, requirement=requirement, message=message)
-    #     email = EmailMessage(
-    #          "A customer contacted us",
-    #         'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
-    #         '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
-    #         MailID,
-    #         ['viacomindiavideo@gmail.com','ayyubkhan4341@gmail.com']
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname')
+        email = request.POST.get('email')
+        mobile = request.POST.get('phone')
+        requirement = request.POST.get('website')
+        message = request.POST.get('description')
+        Interest_Person.objects.create(fullname=fullname, email=email, mobile=mobile, requirement=requirement, message=message)
+        # email = EmailMessage(
+        #     "A customer contacted us",
+        #     'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
+        #     '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
+        #     MailID,
+        #     ['ayyubkhan4341@gmail.com']
             
-         
-    #     )
-    #     email.send(fail_silently=False)
+        # )
+        # email.send(fail_silently=False)
         
-    #     messages.success(request, 'Message has been sent successfully!')
-    # Contact_us_location = contact_us_location.objects.all()
-    # imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
-    # contact_us_page = Contact_Us_Page.objects.all().first()
-    # params = {
-    #     # "meta_keywords" : contact_us_page.meta_keywords,
-    #     # "meta_description" : contact_us_page.meta_description,
-    #     # "meta_title" : contact_us_page.meta_title,
-    #     'contact_us_location': Contact_us_location,
-    #     'imageclientand_vi': imageclientand_vi
-    # }
-    # return render(request, 'components/contactus.html', params)
-    if request.method=='POST':
-        data=request.POST.get('data')
-        data1=json.loads(data)
-        for i in data1:
-          
-            serial_number=i['serial_number']
-            super_category=1
-            category=i['category']
-            description=i['description']
-            image=i['image']
-            obj=Categories.objects.create(serial_number=serial_number,description=description,category=category,image=image)
-            obj.set(super_category=1)
-           
-    return render(request,'upload_payslip.html')
+        messages.success(request, 'Message has been sent successfully!')
+    Contact_us_location = contact_us_location.objects.all()
+    imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
+    contact_us_page = Contact_Us_Page.objects.all().first()
+    params = {
+        # "meta_keywords" : contact_us_page.meta_keywords,
+        # "meta_description" : contact_us_page.meta_description,
+        # "meta_title" : contact_us_page.meta_title,
+        'contact_us_location': Contact_us_location,
+        'imageclientand_vi': imageclientand_vi
+    }
+    return render(request, 'components/contactus.html', params)
+ 
 
 
 def works(request):

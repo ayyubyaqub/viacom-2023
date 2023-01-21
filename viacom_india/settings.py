@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'viacom_india.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "postgres",
+        'NAME': "viacom-india-llp",
         'USER': "postgres",
         'PASSWORD': "Mukeshahir$ayviacom",
         'HOST': "database-1.cl3rooputcor.ap-south-1.rds.amazonaws.com",
@@ -225,12 +225,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # django_heroku.settings(locals())
 
 # EMAIL CONFIGURE
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER = "viacomindiavideo@gmail.com"
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_PASSWORD = "lktdcismmsrrshgj"
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = "viacomindiavideo@gmail.com"
+EMAIL_HOST_USER = "viacomindia99@gmail.com"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "lktdcismmsrrshgj"
+EMAIL_HOST_PASSWORD = "viacomgnn@2023"
 
 
 CSRF_TRUSTED_ORIGINS=['https://viacomindia.com']
