@@ -184,7 +184,7 @@ def create_videos(request):
             "\nBudget : " + str(project_budget) + "\nReference Link : " + str(reference_link),
 
             MailID,
-            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com','ayyubkhan4341@gmail.com'],
+            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com'],
 
             fail_silently=False,
         )
@@ -340,7 +340,7 @@ def contactus(request):
             'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
             '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
             MailID,
-            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com','ayyubkhan4341@gmail.com']
+            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com']
             
         )
         email.send(fail_silently=False)
