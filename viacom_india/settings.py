@@ -233,12 +233,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_PASSWORD = "lktdcismmsrrshgj"
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = "viacomindia99@gmail.com"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "viacomgnn@2023"
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER = "contact@viacomindia.com"
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_PASSWORD = "gurgaon@22"
 
+# EMAIL_HOST = 'sg2plcpnl0135.prod.sin2.secureserver.net'
+# EMAIL_PORT = '587'
+# EMAIL_HOST_USER = 'contact@viacomindia.com'
+# DEFAULT_FROM_EMAIL = 'contact@viacomindia.com'
+# EMAIL_HOST_PASSWORD = 'gurgaon@45M'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'mail.viacomindia.com'
+EMAIL_HOST_USER = 'contact@viacomindia.com'
+EMAIL_HOST_PASSWORD = 'gurgaon@45M'
+EMAIL_PORT = 465
 
 CSRF_TRUSTED_ORIGINS=['https://viacomindia.com']

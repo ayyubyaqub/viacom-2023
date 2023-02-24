@@ -17,7 +17,8 @@ from time import time
 
 # MailID = 'contact@viacomindia.com'
 # MailID = 'viacomindiavideo@gmail.com'
-MailID = 'viacomindia99@gmail.com'
+# MailID = 'viacomindia99@gmail.com'
+MailID = 'contact@viacomindia.com'
 
 
 def verifyHcaptchaToken(request):
@@ -154,6 +155,7 @@ def categories(request):
 
 
 def create_videos(request):
+    print('i am here,158')
     if request.method == 'POST':
         brand_name = request.POST.get('brand_name')
         website = request.POST.get('website')
@@ -172,20 +174,20 @@ def create_videos(request):
         reference_link = request.POST.get('reference_link[]')
         Customer.objects.create(brand_name=brand_name, website=website, first_name=first_name, last_name=last_name, email=email, phone=phone, video_categories=video_categories, other_project_details=other_project_details,
                                 project_description=project_description, project_country=project_country, project_city_state=project_city_state, project_pincode=project_pincode, delivery_speed=delivery_speed, project_budget=project_budget, reference_link=reference_link)
-        # send_mail(
-        #     "A customer booked our service",
-        #     "Brand Name : " +  str(brand_name) + "\nWebsite : " + str(website) + "\nFirst Name : " + str(first_name) + "\nLast Name : "
-        #     + str(last_name) + "\nEmail : " + str(email) + "\nPhone number : " + str(phone) + "\nVideo Category : " + str(video_categories) + "\nOther Project Details : " 
+        send_mail(
+            "A customer booked our service",
+            "Brand Name : " +  str(brand_name) + "\nWebsite : " + str(website) + "\nFirst Name : " + str(first_name) + "\nLast Name : "
+            + str(last_name) + "\nEmail : " + str(email) + "\nPhone number : " + str(phone) + "\nVideo Category : " + str(video_categories) + "\nOther Project Details : " 
 
-        #     +  str(other_project_details) + "\nProject Description : " + str(project_description) + "\nProject Country : " + str(project_country) + "\nCity State : " + str(project_city_state) +
-        #     "\nPincode : " + str(project_pincode) + "\nDelivery Speed : " + str(delivery_speed) +
-        #     "\nBudget : " + str(project_budget) + "\nReference Link : " + str(reference_link),
+            +  str(other_project_details) + "\nProject Description : " + str(project_description) + "\nProject Country : " + str(project_country) + "\nCity State : " + str(project_city_state) +
+            "\nPincode : " + str(project_pincode) + "\nDelivery Speed : " + str(delivery_speed) +
+            "\nBudget : " + str(project_budget) + "\nReference Link : " + str(reference_link),
 
-        #     'viacomindia99@gmail.com',
-        #     ['viacomindiavideo@gmail.com', 'contact@viacomindia.com'],
+            MailID,
+            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com','ayyubkhan4341@gmail.com'],
 
-        #     fail_silently=False,
-        # )
+            fail_silently=False,
+        )
         messages.success(request, 'Message has been sent successfully!')
     obj = create_video.objects.all().first()
     imageclientand_vi = Image_client_logo_and_Vi.objects.all().first()
@@ -333,15 +335,15 @@ def contactus(request):
         requirement = request.POST.get('website')
         message = request.POST.get('description')
         Interest_Person.objects.create(fullname=fullname, email=email, mobile=mobile, requirement=requirement, message=message)
-        # email = EmailMessage(
-        #     "A customer contacted us",
-        #     'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
-        #     '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
-        #     MailID,
-        #     ['ayyubkhan4341@gmail.com']
+        email = EmailMessage(
+            "A customer contacted us",
+            'Name :'+str(fullname) + '\nEmail :'+str(email)+'\nMobile :' + str(mobile) +
+            '\nRequirement :' + str(requirement)+'\nMessage :' + str(message),
+            MailID,
+            ['viacomindiavideo@gmail.com', 'contact@viacomindia.com','ayyubkhan4341@gmail.com']
             
-        # )
-        # email.send(fail_silently=False)
+        )
+        email.send(fail_silently=False)
         
         messages.success(request, 'Message has been sent successfully!')
     Contact_us_location = contact_us_location.objects.all()
